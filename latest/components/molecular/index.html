@@ -416,7 +416,7 @@ same residues. The difference is what has been idealised:</p>
 <tr>
 <td>Chemistry</td>
 <td>Readable — rings look like rings, bond lengths and angles are regular</td>
-<td>Often unreadable — a ring seen edge-on collapses to a line, and bonds overlap where the molecule folds towards you</td>
+<td>Depends on the pose. Where the molecule lies flat in the projection plane it reads perfectly well; where it folds towards you, a ring can collapse to a line and bonds overlap</td>
 </tr>
 <tr>
 <td>Atom positions</td>
@@ -435,10 +435,24 @@ same residues. The difference is what has been idealised:</p>
 </tr>
 </tbody>
 </table>
-<p>So: <strong>Depiction to read the chemistry</strong>, which is what you want nearly all the
-time; <strong>Conformer</strong> when you want to see the pose itself — to judge exactly
-which atom faces which residue, or to check that a strange-looking fit is the
-pose and not the drawing.</p>
+<blockquote>
+<p><strong>Do not read too much into the two pictures above.</strong> They are one pose out of
+a set, and this one happens to project badly — it folds towards the viewer, so
+Conformer flattens two of its rings into near-lines. That contrast is why it
+was chosen to illustrate the setting, not evidence that Conformer usually
+looks like this. A ligand that lies roughly in the projection plane, or a
+smaller or more rigid one, can come out perfectly readable — and then
+Conformer gives you readability <em>and</em> exact positions, which is strictly more
+than Depiction offers.</p>
+</blockquote>
+<p><strong>Which to use is worth deciding per pose rather than once.</strong> Depiction is the
+safe default because it is readable whatever the pose does. Conformer is the
+better picture whenever it is legible, and is the one to reach for when you
+need to judge exactly which atom faces which residue, when you are checking
+that an odd-looking fit is the pose and not the drawing, or when the
+conformation itself is the point — a folded or strained ligand is precisely
+what Depiction smooths away. Flipping between the two on the same pose costs
+nothing, so it is worth a look.</p>
 <p>Stereochemistry survives either way: when the fit mirrors the depiction, its
 wedge and hash bonds are flipped to compensate, so a mirrored layout does not
 silently invert a stereocentre.</p>
