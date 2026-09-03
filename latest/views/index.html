@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-662bn5iw"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Views | Squonk Visualisation Designer</title><link rel="canonical" href="https://informaticsmatters.github.io/squonk2-viz-docs/latest/views/"/><link rel="sitemap" href="/squonk2-viz-docs/latest/sitemap-index.xml"/><link rel="shortcut icon" href="/squonk2-viz-docs/latest/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.2.10"/><meta name="generator" content="Starlight v0.42.0"/><meta property="og:title" content="Views"/><meta property="og:type" content="article"/><meta property="og:url" content="https://informaticsmatters.github.io/squonk2-viz-docs/latest/views/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Arranging charts into view tabs, and opening a view in its own browser window."/><meta property="og:site_name" content="Squonk Visualisation Designer"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Arranging charts into view tabs, and opening a view in its own browser window."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/squonk2-viz-docs/latest/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/squonk2-viz-docs/latest/_astro/common.CVDmg38I.css"><script type="module" src="/squonk2-viz-docs/latest/_astro/page.Dtap5Mdl.js"></script></head><body class="astro-662bn5iw"><a class="sl-skip-link astro-hki6xhe4" href="#_top">Skip to content</a><div class="page sl-flex astro-tqqijxs2"><header class="header astro-tqqijxs2"><div class="header astro-pdjqjl4q"><div class="title-wrapper sl-flex astro-pdjqjl4q"><a href="/squonk2-viz-docs/latest/" class="site-title sl-flex astro-duzvyb6p"><span class="astro-duzvyb6p" translate="no">Squonk Visualisation Designer</span></a></div><div class="sl-flex print:hidden astro-pdjqjl4q"><site-search class="astro-pdjqjl4q astro-ovo6jddo" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-ovo6jddo"><svg aria-hidden="true" class="astro-ovo6jddo astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-ovo6jddo" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-ovo6jddo" style="display: none;"><kbd class="astro-ovo6jddo">Ctrl</kbd><kbd class="astro-ovo6jddo">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-ovo6jddo"><div class="dialog-frame sl-flex astro-ovo6jddo"><button data-close-modal class="sl-flex md:sl-hidden astro-ovo6jddo">Cancel</button><div class="search-container astro-ovo6jddo"><div id="starlight__search" class="astro-ovo6jddo"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/squonk2-viz-docs/latest/_astro/Search.astro_astro_type_script_index_0_lang.CZcReF4N.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-pdjqjl4q"><div class="sl-flex social-icons astro-pdjqjl4q"></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="dark" class="astro-sxvfdy4f">Dark</option><option value="light" class="astro-sxvfdy4f">Light</option><option value="auto" selected class="astro-sxvfdy4f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-tqqijxs2" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-oiov4szm"><svg aria-hidden="true" class="open-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-oiov4szm">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super(),matchMedia(`(min-width: 50em)`).addEventListener(`change`,()=>this.hidePopover()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><script type="module">var e=class extends HTMLElement{connectedCallback(){let e=this.querySelector(`select`),t=this.dataset.root,n=this.dataset.current;!e||!t||!n||(e.addEventListener(`change`,e=>{let r=e.currentTarget;r instanceof HTMLSelectElement&&this.#t(t,n,r.value)}),this.#e(e,`${t}versions.json`,n))}async#e(e,t,n){let r;try{let e=await fetch(t);if(!e.ok)return;r=(await e.json()).versions??[]}catch{return}r.length<2||e.replaceChildren(...r.map(({id:e,title:t})=>new Option(t??e,e,e===n,e===n)))}async#t(e,t,n){if(n===t)return;let r=`${e}${t}`,{pathname:i}=window.location,a=`${e}${n}${i.startsWith(r)&&i.slice(r.length)||`/`}`,o=`${e}${n}/`;if(a===o){window.location.assign(o);return}try{let e=await fetch(a,{method:`HEAD`});window.location.assign(e.ok?a:o)}catch{window.location.assign(o)}}};customElements.define(`starlight-version-select`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-tqqijxs2"><div class="sidebar-content sl-flex astro-tqqijxs2"><div class="version-select astro-wv7whodv"><starlight-version-select data-root="/squonk2-viz-docs/" data-current="latest"><label style="--sl-select-width: 11em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select documentation version</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 6.06a3 3 0 0 0-1.15 5.77A2 2 0 0 1 14 13.06h-4a4 4 0 0 0-2 .56V7.88a3 3 0 1 0-2 0v8.36a3 3 0 1 0 2.16.05A2 2 0 0 1 10 15.06h4a4 4 0 0 0 3.91-3.16A3 3 0 0 0 17 6.06m-10-2a1 1 0 1 1-1 1 1 1 0 0 1 1-1m0 16a1 1 0 1 1 1-1 1 1 0 0 1-1 1m10-10a1 1 0 1 1 1-1 1 1 0 0 1-1 1"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="latest" selected class="astro-sxvfdy4f">latest</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-version-select></div><sl-sidebar-state-persist data-hash="1bgnuin" class="astro-l6ovzziu"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Home</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/getting-started/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Getting started</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/design-tab/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">The design tab</span></a></li><li class="astro-hv37hqxh"><details open class="astro-hv37hqxh"><summary class="astro-hv37hqxh"><span class="group-label astro-hv37hqxh"><span class="large astro-hv37hqxh">Components</span></span><svg aria-hidden="true" class="caret astro-hv37hqxh astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Overview</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/data/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Data components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/charts/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Chart components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/molecular/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Molecular components</span></a></li></ul></details></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/views/" aria-current="page" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Views</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/wiring-patterns/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Wiring patterns</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/reference/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Reference</span></a></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-d4p4vjat"><div class="social-icons astro-d4p4vjat"></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="dark" class="astro-sxvfdy4f">Dark</option><option value="light" class="astro-sxvfdy4f">Light</option><option value="auto" selected class="astro-sxvfdy4f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-tqqijxs2"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-5uhixysx"><aside class="right-sidebar-container print:hidden astro-5uhixysx"><div class="right-sidebar astro-5uhixysx"><div class="lg:sl-hidden astro-zzxvhyjq"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-k5kj7fg6"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-k5kj7fg6"><details id="starlight__mobile-toc" class="astro-k5kj7fg6"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-k5kj7fg6"><span class="toggle sl-flex astro-k5kj7fg6">On this page<svg aria-hidden="true" class="caret astro-k5kj7fg6 astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-k5kj7fg6"></span></summary><div class="dropdown astro-k5kj7fg6"><ul class="isMobile astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#managing-tabs" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Managing tabs</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#putting-charts-in-a-view" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Putting charts in a view</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#arranging-panels" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Arranging panels</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#the-panel-title-bar" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">The panel title bar</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#the-status-bar" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">The status bar</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#opening-a-view-in-its-own-window" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Opening a view in its own window</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.2hy4wuwT.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-zzxvhyjq"><div class="sl-container astro-zzxvhyjq"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#managing-tabs" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Managing tabs</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#putting-charts-in-a-view" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Putting charts in a view</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#arranging-panels" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Arranging panels</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#the-panel-title-bar" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">The panel title bar</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#the-status-bar" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">The status bar</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#opening-a-view-in-its-own-window" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Opening a view in its own window</span></a></li></ul></nav></starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/TableOfContents.astro_astro_type_script_index_0_lang.B-fMLk95.js"></script></div></div></div></aside><div class="main-pane astro-5uhixysx"><main data-pagefind-body class="astro-662bn5iw" lang="en" dir="ltr"><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><h1 id="_top" class="astro-rrzsxf3y">Views</h1></div></div><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><div class="sl-markdown-content"><p>A view tab is a resizable grid of the charts you assign to it. One
+visualisation can have several — an overview and a detail view, say, or one per
+question you keep asking of the data — all drawing on the same wiring.</p>
+<p><img alt="A view tab holding three panels: a scatter plot with a selection, a histogram showing that selection marked against the whole distribution, and a grid of the selected molecules." loading="lazy" decoding="async" width="3200" height="2000" src="/squonk2-viz-docs/latest/_astro/view-tab.CU0WOtuq_FQ7Dz.webp"></p>
+<h2 id="managing-tabs">Managing tabs</h2>
+<p><img alt="The tab strip: the Design tab, then two view tabs each carrying a pop-out and a close control, and a plus button." loading="lazy" decoding="async" width="752" height="112" src="/squonk2-viz-docs/latest/_astro/view-tabs.B1uoWPXX_1cyEbf.webp"></p>
+<ul>
+<li><strong>+</strong> at the end of the strip adds a view.</li>
+<li><strong>Double-click</strong> a tab to rename it. <code>Enter</code> confirms, <code>Escape</code> cancels.</li>
+<li><strong>✕</strong> closes it. That removes the view and its layout — the <em>nodes</em> stay on
+the canvas, so nothing else is lost, but the arrangement is. There is no
+confirmation, so rename rather than close-and-recreate if you can.</li>
+<li><strong>⧉</strong> opens the view in its own window — see below.</li>
+</ul>
+<h2 id="putting-charts-in-a-view">Putting charts in a view</h2>
+<p><strong>Add chart</strong> lists the chart nodes from the Design tab that are not already in
+this view, and adds the one you pick as a panel. Once every node is placed the
+button is greyed out.</p>
+<p>The same node can be in several views at once. Each view keeps its own layout,
+and its own settings for that node — the same scatter plot can be on a log
+scale in one view and a linear one in another.</p>
+<p>The alternative is the <strong>Assign nodes to views</strong> grid on the Design tab, which
+shows every node against every view at once. Use whichever suits: they do the
+same thing.</p>
+<h2 id="arranging-panels">Arranging panels</h2>
+<ul>
+<li><strong>Move</strong> — drag a panel by its title bar.</li>
+<li><strong>Resize</strong> — drag the handle at its bottom-right corner.</li>
+<li><strong>Remove</strong> — the ✕ on the panel’s title bar takes it out of <em>this view</em>. The
+node stays on the canvas and can be added back.</li>
+</ul>
+<p>Layouts are part of the visualisation, so they are saved with it.</p>
+<h2 id="the-panel-title-bar">The panel title bar</h2>
+<p>Every panel carries its name on the left and its actions on the right.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>↓</td>
+<td>Export — see below</td>
+</tr>
+<tr>
+<td>⚙</td>
+<td>This chart’s settings</td>
+</tr>
+<tr>
+<td>✕</td>
+<td>Remove from this view</td>
+</tr>
+</tbody>
+</table>
+<p>The ⚙ opens the settings for that chart: scales, ranges, binning, colours,
+tooltips, and whatever else it offers. What it does <em>not</em> contain is the choice
+of fields, which lives on the node in the Design tab.</p>
+<p><strong>Export</strong> offers <em>Copy as PNG</em>, <em>Download PNG</em> and <em>Download SVG</em> for the 2D
+charts and both interaction views, <em>Copy as PNG</em> and <em>Download PNG</em> for the 3D
+viewer, and page/selection PNG and SDF downloads for the molecule grid. The
+sketcher, the R-group table and the mutation-shells view have no export.</p>
+<h2 id="the-status-bar">The status bar</h2>
+<p>Most charts carry a line along the bottom that says what you are looking at.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shown</strong></td>
+<td>Rows drawn — after any filter arriving from another chart</td>
+</tr>
+<tr>
+<td><strong>Missing</strong></td>
+<td>Rows dropped because a field they need is empty or not a number</td>
+</tr>
+<tr>
+<td><strong>Out of range</strong></td>
+<td>Rows outside an axis range you have set, or beyond a cap</td>
+</tr>
+<tr>
+<td><strong>Selected</strong></td>
+<td>Rows currently selected in this chart</td>
+</tr>
+</tbody>
+</table>
+<p>It is the quickest way to tell an empty chart apart from a broken one: 1000
+shown and 1000 missing means the field is not what you think it is, and 0 shown
+with 1000 out of range means an axis minimum is in the way.</p>
+<h2 id="opening-a-view-in-its-own-window">Opening a view in its own window</h2>
+<p>The <strong>⧉</strong> beside a tab’s ✕ moves that view into a separate browser window,
+which you can drag onto a second monitor. Click it again — or <strong>Return to tab</strong>
+in the emptied tab, or just close the window — to bring the view back.</p>
+<p><strong>The wiring keeps working across the two windows.</strong> A selection made in the
+main window still filters a chart in the popped-out one, and the other way
+round. Nothing needs configuring.</p>
+<p>Several views can be out at once. Renaming the tab renames its window with it,
+so a row of them stays identifiable in the taskbar.</p>
+<p>Worth knowing:</p>
+<ul>
+<li><strong>Popping a view in or out rebuilds its charts.</strong> That is inherent in moving
+them to a different window: a 3D view takes a moment to reload and each
+chart’s own selection resets. Selections wired <em>between</em> nodes survive.</li>
+<li><strong>Your browser may block the pop-up the first time.</strong> If it does, the view
+stays where it was and a warning appears; allow pop-ups for the site and try
+again.</li>
+<li><strong>A window that is completely covered, or on a closed laptop lid, stops
+drawing.</strong> A 3D view in it will appear frozen until you reveal it again.</li>
+<li><strong>Which windows are open is not saved.</strong> Reloading the main window closes
+them all.</li>
+</ul>
+</div><footer class="sl-flex astro-i3kxhrqf"><div class="meta sl-flex astro-i3kxhrqf"></div><div class="pagination-links print:hidden astro-izbs4kne" dir="ltr"><a href="/squonk2-viz-docs/latest/components/molecular/" rel="prev" class="astro-izbs4kne"><svg aria-hidden="true" class="astro-izbs4kne astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-izbs4kne">Previous<br class="astro-izbs4kne"><span class="link-title astro-izbs4kne">Molecular components</span></span></a><a href="/squonk2-viz-docs/latest/wiring-patterns/" rel="next" class="astro-izbs4kne"><svg aria-hidden="true" class="astro-izbs4kne astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-izbs4kne">Next<br class="astro-izbs4kne"><span class="link-title astro-izbs4kne">Wiring patterns</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
