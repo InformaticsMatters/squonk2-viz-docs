@@ -1,0 +1,9 @@
+{
+  "versions": [
+    {
+      "id": "latest",
+      "title": "latest (0.5.2)"
+    }
+  ],
+  "default": "latest"
+}
