@@ -2,12 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Squonk Visualisation Designer</title>
-    <meta http-equiv="refresh" content="0; url=./latest/" />
-    <link rel="canonical" href="./latest/" />
-    <meta name="robots" content="noindex" />
+    <style>
+      :root { color-scheme: light dark; }
+      body {
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        max-width: 40rem;
+        margin: 4rem auto;
+        padding: 0 1.5rem;
+        line-height: 1.5;
+        color: light-dark(#1a1a1a, #e8e8e8);
+        background: light-dark(#fff, #14161a);
+      }
+      h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+      p.lede { color: light-dark(#555, #aaa); margin-top: 0; }
+      .card {
+        display: block;
+        border: 1px solid light-dark(#ddd, #333);
+        border-radius: 0.5rem;
+        padding: 1.25rem 1.5rem;
+        margin: 1rem 0;
+        text-decoration: none;
+        color: inherit;
+      }
+      .card:hover { border-color: light-dark(#999, #666); }
+      .card h2 { margin: 0 0 0.25rem; font-size: 1.1rem; }
+      .card p { margin: 0; color: light-dark(#555, #aaa); }
+    </style>
   </head>
   <body>
-    <p>Redirecting to <a href="./latest/">the latest documentation</a>.</p>
+    <h1>Squonk Visualisation Designer</h1>
+    <p class="lede">
+      Reusable React components for scientific data visualisation, and the
+      drag-and-drop designer built from them for the Squonk Data Manager.
+    </p>
+    <a class="card" href="./latest/">
+      <h2>User Guide &rarr;</h2>
+      <p>How to build and use a visualisation page in the Data Manager app.</p>
+    </a>
+    <a class="card" href="./gallery/">
+      <h2>Component Gallery &rarr;</h2>
+      <p>Every visual component, live, shown against example data.</p>
+    </a>
   </body>
 </html>
