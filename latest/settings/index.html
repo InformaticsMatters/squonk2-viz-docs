@@ -131,7 +131,7 @@ are listed under <a href="../reference/#where-things-are-stored">Reference</a>.<
 </tr>
 <tr>
 <td>Molecule display</td>
-<td>Whether the molecule grid draws structures with aromatic rings or in Kekulé form</td>
+<td>Whether 2D structures are drawn with aromatic rings or in Kekulé form</td>
 </tr>
 </tbody>
 </table>
@@ -142,9 +142,11 @@ every such chart changes with it, including ones already on screen. A chart you
 the default, use the ↺ beside its <strong>Base colour</strong>, or pick <strong>Default (…)</strong> at
 the top of its <strong>Colour scale</strong> list. Both are described under
 <a href="../components/charts/#settings">Chart components</a>.</p>
-<p><strong>Molecule display</strong> applies to the molecule grid only, for now. Other 2D
-structures — the R-group table’s cells, the interaction diagram’s ligand, and
-structures drawn in tooltips — do not follow it yet.</p>
+<p><strong>Molecule display</strong> applies to every 2D structure: the molecule grid and its
+PNG exports, the R-group table’s cells and headers, structures drawn in
+tooltips, and the anchor molecule in MutationShells. Changing it redraws them
+straight away. The one exception is the interaction diagram’s ligand, which the
+diagram draws itself.</p>
 <h3 id="auto-save">Auto save</h3>
 <p><strong>Auto save</strong> saves your work about half a second after each change. It only
 applies once the visualisation <em>has</em> a name, so until you have used <strong>Save as</strong>
