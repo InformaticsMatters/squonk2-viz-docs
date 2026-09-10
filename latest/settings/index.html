@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-662bn5iw"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Settings | Squonk Visualisation Designer</title><link rel="canonical" href="https://informaticsmatters.github.io/squonk2-viz-docs/latest/settings/"/><link rel="sitemap" href="/squonk2-viz-docs/latest/sitemap-index.xml"/><link rel="shortcut icon" href="/squonk2-viz-docs/latest/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.2.10"/><meta name="generator" content="Starlight v0.42.0"/><meta property="og:title" content="Settings"/><meta property="og:type" content="article"/><meta property="og:url" content="https://informaticsmatters.github.io/squonk2-viz-docs/latest/settings/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Application settings, named presets, and how each component's own settings work — who each one affects, and where it is stored."/><meta property="og:site_name" content="Squonk Visualisation Designer"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Application settings, named presets, and how each component's own settings work — who each one affects, and where it is stored."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/squonk2-viz-docs/latest/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/squonk2-viz-docs/latest/_astro/common.CVDmg38I.css"><script type="module" src="/squonk2-viz-docs/latest/_astro/page.Dtap5Mdl.js"></script></head><body class="astro-662bn5iw"><a class="sl-skip-link astro-hki6xhe4" href="#_top">Skip to content</a><div class="page sl-flex astro-tqqijxs2"><header class="header astro-tqqijxs2"><div class="header astro-pdjqjl4q"><div class="title-wrapper sl-flex astro-pdjqjl4q"><a href="/squonk2-viz-docs/latest/" class="site-title sl-flex astro-duzvyb6p"><span class="astro-duzvyb6p" translate="no">Squonk Visualisation Designer</span></a></div><div class="sl-flex print:hidden astro-pdjqjl4q"><site-search class="astro-pdjqjl4q astro-ovo6jddo" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-ovo6jddo"><svg aria-hidden="true" class="astro-ovo6jddo astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-ovo6jddo" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-ovo6jddo" style="display: none;"><kbd class="astro-ovo6jddo">Ctrl</kbd><kbd class="astro-ovo6jddo">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-ovo6jddo"><div class="dialog-frame sl-flex astro-ovo6jddo"><button data-close-modal class="sl-flex md:sl-hidden astro-ovo6jddo">Cancel</button><div class="search-container astro-ovo6jddo"><div id="starlight__search" class="astro-ovo6jddo"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/squonk2-viz-docs/latest/_astro/Search.astro_astro_type_script_index_0_lang.CZcReF4N.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-pdjqjl4q"><div class="sl-flex social-icons astro-pdjqjl4q"></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="dark" class="astro-sxvfdy4f">Dark</option><option value="light" class="astro-sxvfdy4f">Light</option><option value="auto" selected class="astro-sxvfdy4f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-tqqijxs2" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-oiov4szm"><svg aria-hidden="true" class="open-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-oiov4szm">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super(),matchMedia(`(min-width: 50em)`).addEventListener(`change`,()=>this.hidePopover()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><script type="module">var e=class extends HTMLElement{connectedCallback(){let e=this.querySelector(`select`),t=this.dataset.root,n=this.dataset.current;!e||!t||!n||(e.addEventListener(`change`,e=>{let r=e.currentTarget;r instanceof HTMLSelectElement&&this.#t(t,n,r.value)}),this.#e(e,`${t}versions.json`,n))}async#e(e,t,n){let r;try{let e=await fetch(t);if(!e.ok)return;r=(await e.json()).versions??[]}catch{return}r.length<2||e.replaceChildren(...r.map(({id:e,title:t})=>new Option(t??e,e,e===n,e===n)))}async#t(e,t,n){if(n===t)return;let r=`${e}${t}`,{pathname:i}=window.location,a=`${e}${n}${i.startsWith(r)&&i.slice(r.length)||`/`}`,o=`${e}${n}/`;if(a===o){window.location.assign(o);return}try{let e=await fetch(a,{method:`HEAD`});window.location.assign(e.ok?a:o)}catch{window.location.assign(o)}}};customElements.define(`starlight-version-select`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-tqqijxs2"><div class="sidebar-content sl-flex astro-tqqijxs2"><div class="version-select astro-wv7whodv"><starlight-version-select data-root="/squonk2-viz-docs/" data-current="latest"><label style="--sl-select-width: 11em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select documentation version</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 6.06a3 3 0 0 0-1.15 5.77A2 2 0 0 1 14 13.06h-4a4 4 0 0 0-2 .56V7.88a3 3 0 1 0-2 0v8.36a3 3 0 1 0 2.16.05A2 2 0 0 1 10 15.06h4a4 4 0 0 0 3.91-3.16A3 3 0 0 0 17 6.06m-10-2a1 1 0 1 1-1 1 1 1 0 0 1 1-1m0 16a1 1 0 1 1 1-1 1 1 0 0 1-1 1m10-10a1 1 0 1 1 1-1 1 1 0 0 1-1 1"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="latest" selected class="astro-sxvfdy4f">latest</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-version-select></div><sl-sidebar-state-persist data-hash="0d7mh5h" class="astro-l6ovzziu"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Home</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/getting-started/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Getting started</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/design-tab/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">The design tab</span></a></li><li class="astro-hv37hqxh"><details open class="astro-hv37hqxh"><summary class="astro-hv37hqxh"><span class="group-label astro-hv37hqxh"><span class="large astro-hv37hqxh">Components</span></span><svg aria-hidden="true" class="caret astro-hv37hqxh astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Overview</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/data/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Data components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/charts/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Chart components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/molecular/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Molecular components</span></a></li></ul></details></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/views/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Views</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/settings/" aria-current="page" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Settings</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/wiring-patterns/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Wiring patterns</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/reference/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Reference</span></a></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-d4p4vjat"><div class="social-icons astro-d4p4vjat"></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="dark" class="astro-sxvfdy4f">Dark</option><option value="light" class="astro-sxvfdy4f">Light</option><option value="auto" selected class="astro-sxvfdy4f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-tqqijxs2"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-5uhixysx"><aside class="right-sidebar-container print:hidden astro-5uhixysx"><div class="right-sidebar astro-5uhixysx"><div class="lg:sl-hidden astro-zzxvhyjq"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-k5kj7fg6"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-k5kj7fg6"><details id="starlight__mobile-toc" class="astro-k5kj7fg6"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-k5kj7fg6"><span class="toggle sl-flex astro-k5kj7fg6">On this page<svg aria-hidden="true" class="caret astro-k5kj7fg6 astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-k5kj7fg6"></span></summary><div class="dropdown astro-k5kj7fg6"><ul class="isMobile astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#application-settings" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Application settings</span></a><ul class="isMobile astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#defaults" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Defaults</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#auto-save" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Auto save</span></a></li></ul></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#presets" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Presets</span></a><ul class="isMobile astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#the-kinds-of-preset" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">The kinds of preset</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#making-your-own" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Making your own</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#presets-belong-to-the-project" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Presets belong to the project</span></a></li></ul></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#component-settings" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Component settings</span></a><ul class="isMobile astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#what-the-panels-have-in-common" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">What the panels have in common</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#each-components-own-settings" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Each component’s own settings</span></a></li></ul></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.2hy4wuwT.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-zzxvhyjq"><div class="sl-container astro-zzxvhyjq"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#application-settings" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Application settings</span></a><ul class="astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#defaults" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Defaults</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#auto-save" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Auto save</span></a></li></ul></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#presets" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Presets</span></a><ul class="astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#the-kinds-of-preset" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">The kinds of preset</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#making-your-own" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Making your own</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#presets-belong-to-the-project" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Presets belong to the project</span></a></li></ul></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#component-settings" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Component settings</span></a><ul class="astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#what-the-panels-have-in-common" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">What the panels have in common</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#each-components-own-settings" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Each component’s own settings</span></a></li></ul></li></ul></nav></starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/TableOfContents.astro_astro_type_script_index_0_lang.B-fMLk95.js"></script></div></div></div></aside><div class="main-pane astro-5uhixysx"><main data-pagefind-body class="astro-662bn5iw" lang="en" dir="ltr"><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><h1 id="_top" class="astro-rrzsxf3y">Settings</h1></div></div><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><div class="sl-markdown-content"><p>Settings come in three layers, and the difference between them is mostly about
+<em>who else</em> a change affects.</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Set in</th>
+<th>Affects</th>
+<th>Stored in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#application-settings">Application settings</a></td>
+<td>⚙ in the app bar</td>
+<td>Every visualisation in the project</td>
+<td>The project</td>
+</tr>
+<tr>
+<td><a href="#presets">Presets</a></td>
+<td>⚙ in the app bar → <strong>Presets</strong>, then chosen in a chart’s ⚙</td>
+<td>Every chart that names the preset, in every visualisation in the project</td>
+<td>The project</td>
+</tr>
+<tr>
+<td><a href="#component-settings">Component settings</a></td>
+<td>⚙ on a panel’s title bar</td>
+<td>That one chart, in that one view</td>
+<td>The visualisation</td>
+</tr>
+</tbody>
+</table>
+<p>The first two live in the project’s <code>.visualisations</code> directory, beside your
+saved visualisations, so they are the same for everyone working in the project
+and still there the next time you launch the application. Component settings
+live inside the visualisation’s own <code>.viz.json</code> and travel with it. The files
+are listed under <a href="../reference/#where-things-are-stored">Reference</a>.</p>
+<h2 id="application-settings">Application settings</h2>
+<p>The ⚙ in the app bar opens the application’s settings.</p>
+<p><img alt="The Settings dialog on its Defaults tab: default colour, default colour scale, and a toggle between aromatic and Kekulé molecule display, with an Auto save checkbox below." loading="lazy" decoding="async" width="2400" height="1488" src="/squonk2-viz-docs/latest/_astro/settings-dialog.BN4lXHAz_19Lgn4.webp"></p>
+<p>It has two tabs, <strong>Defaults</strong> and <strong>Presets</strong> (the latter is described
+<a href="#presets">below</a>), and the <strong>Auto save</strong> checkbox underneath them.</p>
+<h3 id="defaults">Defaults</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default colour</td>
+<td>The colour a chart draws in when nothing is mapped to colour and the chart has no base colour of its own</td>
+</tr>
+<tr>
+<td>Default colour scale</td>
+<td>The colour ramp a chart uses when a field <em>is</em> mapped to colour and the chart has no colour scale of its own</td>
+</tr>
+<tr>
+<td>Molecule display</td>
+<td>Whether the molecule grid draws structures with aromatic rings or in Kekulé form</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A default is followed, not copied.</strong> A chart that has no colour or colour
+scale of its own uses the current default. So when you change the default,
+every such chart changes with it, including ones already on screen. A chart you
+<em>have</em> given its own base colour or colour scale keeps it. To put it back onto
+the default, use the ↺ beside its <strong>Base colour</strong>, or pick <strong>Default (…)</strong> at
+the top of its <strong>Colour scale</strong> list. Both are described under
+<a href="../components/charts/#settings">Chart components</a>.</p>
+<p><strong>Molecule display</strong> applies to the molecule grid only, for now. Other 2D
+structures — the R-group table’s cells, the interaction diagram’s ligand, and
+structures drawn in tooltips — do not follow it yet.</p>
+<h3 id="auto-save">Auto save</h3>
+<p><strong>Auto save</strong> saves your work about half a second after each change. It only
+applies once the visualisation <em>has</em> a name, so until you have used <strong>Save as</strong>
+there is nothing for it to write to. With Auto save off, the <strong>Save</strong> button
+lights up whenever there is something unsaved. See
+<a href="../getting-started/#saving-into-the-project">Getting started</a> for how saving
+works.</p>
+<h2 id="presets">Presets</h2>
+<p>Some settings are worth defining once and sharing, rather than repeating in
+every chart. A <strong>preset</strong> is a named set of those values. You define it once
+under <strong>Settings → Presets</strong>, and each chart then picks the one it wants, by
+name.</p>
+<p>The main reason is consistency, not saving keystrokes. When two charts point at
+one preset, editing the preset updates both immediately, so they cannot drift
+apart. That matters most where drifting apart would change what the data <em>says</em>.
+If the interaction map and the 3D overlay used different H-bond cutoffs, they
+would show different contacts from the same poses, and nothing on screen would
+say why.</p>
+<p><img alt="The Presets tab: a preset type, a preset, buttons to create, copy, rename and delete, and the nine cutoff values below." loading="lazy" decoding="async" width="2400" height="2784" src="/squonk2-viz-docs/latest/_astro/settings-presets.DE_TPVdi_Z2rtoyU.webp"></p>
+<h3 id="the-kinds-of-preset">The kinds of preset</h3>
+<p>There are three kinds today. All three happen to be used by molecular
+components, but the mechanism is not tied to them.</p>
+<table>
+<thead>
+<tr>
+<th>Preset type</th>
+<th>What it carries</th>
+<th>Used by</th>
+<th>Chosen on the chart’s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Interaction cutoffs</strong></td>
+<td>The geometry that decides what counts as a contact</td>
+<td><a href="../components/molecular/#ligandinteractionmap">Interaction map</a>, <a href="../components/molecular/#ligandinteractiondiagram">interaction diagram</a>, <a href="../components/molecular/#moleculeviewer3d">3D viewer</a></td>
+<td>Algorithm tab</td>
+</tr>
+<tr>
+<td><strong>Interaction types</strong></td>
+<td>Which of the ten interaction types are shown</td>
+<td>The same three</td>
+<td>Appearance tab</td>
+</tr>
+<tr>
+<td><strong>3D viewer display</strong></td>
+<td>How the 3D viewer draws ligands and proteins</td>
+<td>The <a href="../components/molecular/#moleculeviewer3d">3D viewer</a></td>
+<td>Appearance tab</td>
+</tr>
+</tbody>
+</table>
+<p>The row in a chart’s ⚙ uses the same words as the <strong>Preset type</strong>, so you can
+tell which preset a row is asking for.</p>
+<p><strong>Interaction cutoffs.</strong> Nine values can be edited:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H-bond dist (Å)</td>
+<td>3.5</td>
+</tr>
+<tr>
+<td>H-bond don. angle (°)</td>
+<td>45</td>
+</tr>
+<tr>
+<td>H-bond acc. angle (°)</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Hydrophobic dist (Å)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>π-stacking dist (Å)</td>
+<td>5.5</td>
+</tr>
+<tr>
+<td>Cation-π dist (Å)</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Ionic dist (Å)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Halogen dist (Å)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Metal dist (Å)</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>Changing them re-runs contact detection, which costs roughly 40 ms per ligand.</p>
+<p><strong>Interaction types.</strong> Which of the ten kinds of interaction are shown: H-bond,
+backbone H-bond, weak H-bond, water H-bond, hydrophobic, π-stacking, cation-π,
+ionic, halogen bond and metal coordination. Changing them costs nothing: every
+type is detected in one pass, and this preset only filters what is shown.</p>
+<p><strong>3D viewer display.</strong> Six settings: ligand style, ligand colouring, how far
+unmarked ligands recede, protein style, which of cartoon / ribbon / surface are
+overlaid on the protein, and protein colouring. A 3D viewer takes these values
+<em>only</em> from its preset; the viewer itself has no settings for them.</p>
+<h3 id="making-your-own">Making your own</h3>
+<p>Each kind starts with one preset, <strong>Default</strong>. It is read-only, cannot be
+deleted, and holds the built-in values. To make one of your own:</p>
+<ol>
+<li>Choose the <strong>Preset type</strong>.</li>
+<li>Select <strong>Default</strong>, or any preset you want to start from, and click
+<strong>Copy</strong>. Or click <strong>+ New</strong> to start from the built-in values.</li>
+<li>Give it a name.</li>
+<li>Edit the values below. They are saved as you type.</li>
+</ol>
+<p><strong>Rename</strong> and <strong>Delete</strong> act on the selected preset.</p>
+<p>To use a preset, open the chart’s ⚙ and pick the preset by name in the row for
+its kind.</p>
+<h3 id="presets-belong-to-the-project">Presets belong to the project</h3>
+<p>Presets are stored with the project’s settings, not inside any one
+visualisation. Two things follow from that:</p>
+<ul>
+<li><strong>Editing a preset affects every visualisation in the project</strong> that names
+it, including ones your colleagues are working on. Make a copy if you want
+to experiment.</li>
+<li><strong>A visualisation records only the preset’s <em>name</em>.</strong> Copy a <code>.viz.json</code> to
+another project that does not have the same presets, and its charts fall
+back to the Default values. The chart’s ⚙ shows the preset’s name followed
+by <em>(not defined)</em> until you point it at another one. Renaming or
+deleting a preset has the same effect on every chart that used the old name,
+and the dialog warns you before it does it.</li>
+</ul>
+<h2 id="component-settings">Component settings</h2>
+<p>Everything else is set on the component itself. There are two places, and
+which one a setting lives in depends on what kind of thing it is.</p>
+<p><strong>Fields are chosen on the node</strong>, in the <a href="../design-tab/#fields-live-on-the-node">Design tab</a>:
+which column is the X axis, which holds the structures, which to colour by.</p>
+<p><strong>Everything else is behind the ⚙</strong> on the panel’s title bar, in a
+<a href="../views/#the-panel-title-bar">view tab</a>: scales, ranges, binning, colours,
+tooltips, and whatever else that component offers.</p>
+<p><strong>Component settings belong to the view.</strong> The same node can be in more than
+one view, and each view keeps its own settings for it. That lets the same
+scatter plot use a log scale in one view and a linear one in another, or a 3D
+viewer use a different display preset in each. The settings are saved with
+the visualisation, together with each view’s layout.</p>
+<h3 id="what-the-panels-have-in-common">What the panels have in common</h3>
+<p><strong>Tabs.</strong> A component with a lot of settings splits them into tabs. The tab
+names are the same across components: <strong>Fields</strong>, <strong>Axes</strong>, <strong>Appearance</strong>,
+<strong>Binning</strong>, <strong>Layout</strong>, <strong>Algorithm</strong> and <strong>Tooltip</strong>. Settings that limit how
+much work the component does, such as <strong>Require filter</strong> and <strong>Max ligands</strong>,
+are always under <strong>Algorithm</strong>. Settings that limit only how much is drawn go
+under Axes, Layout or Appearance. A component with only a few settings shows a
+single panel without tabs.</p>
+<p><strong><code>auto (…)</code>.</strong> A number box left blank shows the value the component worked
+out for itself, as <code>auto (…)</code>. Type a value to override it; clear the box to
+go back to auto.</p>
+<p><strong>Tooltip.</strong> Every component with a configurable tooltip has its own
+<strong>Tooltip</strong> tab. There you list the fields that hovering should show. Left
+blank, the component shows its own default. If you list a molecule field, the
+tooltip draws the structure.</p>
+<h3 id="each-components-own-settings">Each component’s own settings</h3>
+<p>What each component’s ⚙ offers is described with that component:</p>
+<ul>
+<li><a href="../components/data/">Data components</a> — the Dataset, Data Joiner,
+Calculated Fields and FileSelector nodes are configured on the node itself
+rather than through a ⚙.</li>
+<li><a href="../components/charts/">Chart components</a> — including the settings the
+charts share: base colour, colour scale, Linear / Log, Asc / Desc and
+aggregation.</li>
+<li><a href="../components/molecular/">Molecular components</a> — including which of their
+settings come from a preset.</li>
+</ul>
+</div><footer class="sl-flex astro-i3kxhrqf"><div class="meta sl-flex astro-i3kxhrqf"></div><div class="pagination-links print:hidden astro-izbs4kne" dir="ltr"><a href="/squonk2-viz-docs/latest/views/" rel="prev" class="astro-izbs4kne"><svg aria-hidden="true" class="astro-izbs4kne astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-izbs4kne">Previous<br class="astro-izbs4kne"><span class="link-title astro-izbs4kne">Views</span></span></a><a href="/squonk2-viz-docs/latest/wiring-patterns/" rel="next" class="astro-izbs4kne"><svg aria-hidden="true" class="astro-izbs4kne astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-izbs4kne">Next<br class="astro-izbs4kne"><span class="link-title astro-izbs4kne">Wiring patterns</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
