@@ -177,7 +177,7 @@ in the table’s ⚙.</li>
 chart downstream offers the new columns.</p>
 <p><img alt="A view showing a mutation-shells diagram and a scatter plot, both plotting columns that were calculated rather than read from the file." loading="lazy" decoding="async" width="3200" height="2000" src="/squonk2-viz-docs/latest/_astro/view-series.BQrSQtZ1_Z1BfKQ1.webp"></p>
 <p>The chart above plots <code>pIC50</code> against <code>selectivity</code>, neither of which is in the
-file: one is <code>9 - log10([IC50_nM_TargetA])</code> and the other is
+file: one is <code>-log10([IC50_nM_TargetA] / 1e9)</code> and the other is
 <code>[IC50_nM_TargetB] / [IC50_nM_TargetA]</code>.</p>
 <p>Calculated Fields nodes chain, and they work after a Data Joiner too — which is
 the point of it being its own node rather than a setting on the dataset. The
