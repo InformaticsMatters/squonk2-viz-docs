@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-662bn5iw"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Performance | Squonk Visualisation Designer</title><link rel="canonical" href="https://informaticsmatters.github.io/squonk2-viz-docs/latest/data-centre/performance/"/><link rel="sitemap" href="/squonk2-viz-docs/latest/sitemap-index.xml"/><link rel="shortcut icon" href="/squonk2-viz-docs/latest/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.2.10"/><meta name="generator" content="Starlight v0.42.0"/><meta property="og:title" content="Performance"/><meta property="og:type" content="article"/><meta property="og:url" content="https://informaticsmatters.github.io/squonk2-viz-docs/latest/data-centre/performance/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Measured memory and speed against the number of rows and molecules - for plain tables and for structures - and where the limits are today."/><meta property="og:site_name" content="Squonk Visualisation Designer"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Measured memory and speed against the number of rows and molecules - for plain tables and for structures - and where the limits are today."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/squonk2-viz-docs/latest/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/squonk2-viz-docs/latest/_astro/common.CVDmg38I.css"><script type="module" src="/squonk2-viz-docs/latest/_astro/page.Dtap5Mdl.js"></script></head><body class="astro-662bn5iw"><a class="sl-skip-link astro-hki6xhe4" href="#_top">Skip to content</a><div class="page sl-flex astro-tqqijxs2"><header class="header astro-tqqijxs2"><div class="header astro-pdjqjl4q"><div class="title-wrapper sl-flex astro-pdjqjl4q"><a href="/squonk2-viz-docs/latest/" class="site-title sl-flex astro-duzvyb6p"><span class="astro-duzvyb6p" translate="no">Squonk Visualisation Designer</span></a></div><div class="sl-flex print:hidden astro-pdjqjl4q"><site-search class="astro-pdjqjl4q astro-ovo6jddo" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-ovo6jddo"><svg aria-hidden="true" class="astro-ovo6jddo astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-ovo6jddo" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-ovo6jddo" style="display: none;"><kbd class="astro-ovo6jddo">Ctrl</kbd><kbd class="astro-ovo6jddo">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-ovo6jddo"><div class="dialog-frame sl-flex astro-ovo6jddo"><button data-close-modal class="sl-flex md:sl-hidden astro-ovo6jddo">Cancel</button><div class="search-container astro-ovo6jddo"><div id="starlight__search" class="astro-ovo6jddo"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/squonk2-viz-docs/latest/_astro/Search.astro_astro_type_script_index_0_lang.CZcReF4N.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-pdjqjl4q"><div class="sl-flex social-icons astro-pdjqjl4q"></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="dark" class="astro-sxvfdy4f">Dark</option><option value="light" class="astro-sxvfdy4f">Light</option><option value="auto" selected class="astro-sxvfdy4f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-tqqijxs2" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-oiov4szm"><svg aria-hidden="true" class="open-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-oiov4szm">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super(),matchMedia(`(min-width: 50em)`).addEventListener(`change`,()=>this.hidePopover()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><script type="module">var e=class extends HTMLElement{connectedCallback(){let e=this.querySelector(`select`),t=this.dataset.root,n=this.dataset.current;!e||!t||!n||(e.addEventListener(`change`,e=>{let r=e.currentTarget;r instanceof HTMLSelectElement&&this.#t(t,n,r.value)}),this.#e(e,`${t}versions.json`,n))}async#e(e,t,n){let r;try{let e=await fetch(t);if(!e.ok)return;r=(await e.json()).versions??[]}catch{return}r.length<2||e.replaceChildren(...r.map(({id:e,title:t})=>new Option(t??e,e,e===n,e===n)))}async#t(e,t,n){if(n===t)return;let r=`${e}${t}`,{pathname:i}=window.location,a=`${e}${n}${i.startsWith(r)&&i.slice(r.length)||`/`}`,o=`${e}${n}/`;if(a===o){window.location.assign(o);return}try{let e=await fetch(a,{method:`HEAD`});window.location.assign(e.ok?a:o)}catch{window.location.assign(o)}}};customElements.define(`starlight-version-select`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-tqqijxs2"><div class="sidebar-content sl-flex astro-tqqijxs2"><div class="version-select astro-wv7whodv"><starlight-version-select data-root="/squonk2-viz-docs/" data-current="latest"><label style="--sl-select-width: 11em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select documentation version</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 6.06a3 3 0 0 0-1.15 5.77A2 2 0 0 1 14 13.06h-4a4 4 0 0 0-2 .56V7.88a3 3 0 1 0-2 0v8.36a3 3 0 1 0 2.16.05A2 2 0 0 1 10 15.06h4a4 4 0 0 0 3.91-3.16A3 3 0 0 0 17 6.06m-10-2a1 1 0 1 1-1 1 1 1 0 0 1 1-1m0 16a1 1 0 1 1 1-1 1 1 0 0 1-1 1m10-10a1 1 0 1 1 1-1 1 1 0 0 1-1 1"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="latest" selected class="astro-sxvfdy4f">latest</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-version-select></div><sl-sidebar-state-persist data-hash="17blq5k" class="astro-l6ovzziu"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Home</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/getting-started/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Getting started</span></a></li><li class="astro-hv37hqxh"><details open class="astro-hv37hqxh"><summary class="astro-hv37hqxh"><span class="group-label astro-hv37hqxh"><span class="large astro-hv37hqxh">The data centre</span></span><svg aria-hidden="true" class="caret astro-hv37hqxh astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Overview</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/why-a-database/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Why a database</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/postgres-and-rdkit/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Why PostgreSQL and RDKit</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/molecules/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">How molecules are stored</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/joins/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">How a join works</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/charts/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">How charts get their data</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/performance/" aria-current="page" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Performance</span></a></li></ul></details></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/design-tab/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">The design tab</span></a></li><li class="astro-hv37hqxh"><details open class="astro-hv37hqxh"><summary class="astro-hv37hqxh"><span class="group-label astro-hv37hqxh"><span class="large astro-hv37hqxh">Components</span></span><svg aria-hidden="true" class="caret astro-hv37hqxh astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Overview</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/data/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Data components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/charts/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Chart components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/molecular/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Molecular components</span></a></li></ul></details></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/views/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Views</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/settings/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Settings</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/wiring-patterns/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Wiring patterns</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/reference/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Reference</span></a></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-d4p4vjat"><div class="social-icons astro-d4p4vjat"></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="dark" class="astro-sxvfdy4f">Dark</option><option value="light" class="astro-sxvfdy4f">Light</option><option value="auto" selected class="astro-sxvfdy4f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-tqqijxs2"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-5uhixysx"><aside class="right-sidebar-container print:hidden astro-5uhixysx"><div class="right-sidebar astro-5uhixysx"><div class="lg:sl-hidden astro-zzxvhyjq"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-k5kj7fg6"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-k5kj7fg6"><details id="starlight__mobile-toc" class="astro-k5kj7fg6"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-k5kj7fg6"><span class="toggle sl-flex astro-k5kj7fg6">On this page<svg aria-hidden="true" class="caret astro-k5kj7fg6 astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-k5kj7fg6"></span></summary><div class="dropdown astro-k5kj7fg6"><ul class="isMobile astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#how-they-were-measured" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">How they were measured</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#plain-tables-memory" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Plain tables: memory</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#plain-tables-how-long-a-chart-waits" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Plain tables: how long a chart waits</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#structures-memory-and-build-time" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Structures: memory and build time</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#structures-how-long-a-search-takes" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Structures: how long a search takes</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#limits-today" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Limits today</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.2hy4wuwT.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-zzxvhyjq"><div class="sl-container astro-zzxvhyjq"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#how-they-were-measured" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">How they were measured</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#plain-tables-memory" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Plain tables: memory</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#plain-tables-how-long-a-chart-waits" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Plain tables: how long a chart waits</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#structures-memory-and-build-time" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Structures: memory and build time</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#structures-how-long-a-search-takes" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Structures: how long a search takes</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#limits-today" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Limits today</span></a></li></ul></nav></starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/TableOfContents.astro_astro_type_script_index_0_lang.B-fMLk95.js"></script></div></div></div></aside><div class="main-pane astro-5uhixysx"><main data-pagefind-body class="astro-662bn5iw" lang="en" dir="ltr"><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><h1 id="_top" class="astro-rrzsxf3y">Performance</h1></div></div><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><div class="sl-markdown-content"><blockquote>
+<p>Optional reading: this explains what happens out of sight. See <a href="../">The data centre</a> for what this section is, and <a href="../../components/data/">Data</a> for how to
+do things.</p>
+</blockquote>
+<p>These are measurements, not promises. They say what the data centre does as a dataset grows, so you can judge what to expect of yours, and they say where it stops.</p>
+<h2 id="how-they-were-measured">How they were measured</h2>
+<ul>
+<li><strong>Machine:</strong> one development workstation (12 cores, 24 threads, 62 GB of memory) with PostgreSQL 15.8 and the RDKit cartridge running in a container on the same machine,
+with PostgreSQL’s <em>default</em> memory settings. The browser side was a script calling the same HTTP interface the application uses, so each time includes the database, the
+server and the JSON, but no network. A shared production database, a network, and a drawing browser add to these times; how the times grow with size is what carries over.</li>
+<li><strong>Plain tables:</strong> five columns (an integer id, three decimals, a short label), 1,000 to 10,000,000 rows. Each time is the median of five runs after one warm-up.</li>
+<li><strong>Structures:</strong> a docking run of 35,090 poses (45 fields; each structure is a molfile of about 3.1 KB), and larger sets made by repeating it three and nine times, so
+every pattern keeps the same share of matches at each size. Fingerprint: Morgan, radius 2, 2048 bits. Each time is the median of five runs.</li>
+<li><strong>“In the browser”</strong> figures come from loading the same files with the library’s own parser, as a browser tab would, and measuring the memory kept afterwards.</li>
+</ul>
+<h2 id="plain-tables-memory">Plain tables: memory</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Rows</th>
+<th style="text-align: right">Imported in</th>
+<th style="text-align: right">On disk (data centre)</th>
+<th style="text-align: right">In a browser tab, if loaded there</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1,000</td>
+<td style="text-align: right">0.6 s</td>
+<td style="text-align: right">128 KB</td>
+<td style="text-align: right">1.3 MB</td>
+</tr>
+<tr>
+<td style="text-align: right">10,000</td>
+<td style="text-align: right">0.6 s</td>
+<td style="text-align: right">1.0 MB</td>
+<td style="text-align: right">5 MB</td>
+</tr>
+<tr>
+<td style="text-align: right">100,000</td>
+<td style="text-align: right">1.1 s</td>
+<td style="text-align: right">9.7 MB</td>
+<td style="text-align: right">43 MB</td>
+</tr>
+<tr>
+<td style="text-align: right">1,000,000</td>
+<td style="text-align: right">4.3 s</td>
+<td style="text-align: right">95 MB</td>
+<td style="text-align: right">440 MB</td>
+</tr>
+<tr>
+<td style="text-align: right">10,000,000</td>
+<td style="text-align: right">43 s</td>
+<td style="text-align: right">944 MB</td>
+<td style="text-align: right">about 4.4 GB (not attempted: more than a tab will hold)</td>
+</tr>
+</tbody>
+</table>
+<p>The database holds about <strong>100 bytes a row</strong> for this table, on disk, where the browser holds about <strong>440</strong>. More importantly, the browser <em>does not hold it at all</em> in the
+data centre: what it keeps is what it draws, which is the next table.</p>
+<h2 id="plain-tables-how-long-a-chart-waits">Plain tables: how long a chart waits</h2>
+<p>Median milliseconds, from asking to having the answer.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Rows</th>
+<th style="text-align: right">Scatter, 10,000-point sample</th>
+<th style="text-align: right">Histogram</th>
+<th style="text-align: right">Hexbin</th>
+<th style="text-align: right">Box plot</th>
+<th style="text-align: right">Select half the rows</th>
+<th style="text-align: right">Every point, no sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1,000</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">7</td>
+<td style="text-align: right">15</td>
+<td style="text-align: right">11</td>
+<td style="text-align: right">8</td>
+<td style="text-align: right">5</td>
+</tr>
+<tr>
+<td style="text-align: right">10,000</td>
+<td style="text-align: right">25</td>
+<td style="text-align: right">18</td>
+<td style="text-align: right">48</td>
+<td style="text-align: right">20</td>
+<td style="text-align: right">163</td>
+<td style="text-align: right">23</td>
+</tr>
+<tr>
+<td style="text-align: right">100,000</td>
+<td style="text-align: right">34</td>
+<td style="text-align: right">87</td>
+<td style="text-align: right">426</td>
+<td style="text-align: right">193</td>
+<td style="text-align: right">341</td>
+<td style="text-align: right">153</td>
+</tr>
+<tr>
+<td style="text-align: right">1,000,000</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">845</td>
+<td style="text-align: right">1,652</td>
+<td style="text-align: right">1,713</td>
+<td style="text-align: right">2,008</td>
+<td style="text-align: right">1,527</td>
+</tr>
+<tr>
+<td style="text-align: right">10,000,000</td>
+<td style="text-align: right">329</td>
+<td style="text-align: right">1,675</td>
+<td style="text-align: right">14,522</td>
+<td style="text-align: right">17,563</td>
+<td style="text-align: right">19,840</td>
+<td style="text-align: right">14,135</td>
+</tr>
+</tbody>
+</table>
+<p>What the browser receives, for the same questions:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Rows</th>
+<th style="text-align: right">Scatter sample</th>
+<th>Histogram, hexbin or box plot</th>
+<th style="text-align: right">Every point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1,000</td>
+<td style="text-align: right">22 KB</td>
+<td>a few hundred numbers</td>
+<td style="text-align: right">22 KB</td>
+</tr>
+<tr>
+<td style="text-align: right">100,000</td>
+<td style="text-align: right">242 KB</td>
+<td>a few hundred numbers</td>
+<td style="text-align: right">2.4 MB</td>
+</tr>
+<tr>
+<td style="text-align: right">1,000,000</td>
+<td style="text-align: right">252 KB</td>
+<td>a few hundred numbers</td>
+<td style="text-align: right">25 MB</td>
+</tr>
+<tr>
+<td style="text-align: right">10,000,000</td>
+<td style="text-align: right">262 KB</td>
+<td>a few hundred numbers</td>
+<td style="text-align: right">about 250 MB</td>
+</tr>
+</tbody>
+</table>
+<p>How to read them:</p>
+<ul>
+<li><strong>The default scatter plot is almost flat.</strong> It asks for at most 10,000 points, so it is about a quarter of a megabyte and well under a second at every size, including
+ten million rows. This is the sampling described in <a href="../charts/">How charts get their data</a>.</li>
+<li><strong>The grouped charts grow with the rows, but gently</strong>, because the database does the counting in one pass over the columns it needs: a histogram is under a second to a
+million rows and about 1.7 seconds at ten million. Hexbin and box plot do more arithmetic per row and cost more: about twice a histogram at a million rows and about nine times at ten million.</li>
+<li><strong>Drawing every point is the thing to avoid.</strong> At a million rows it is 25 MB and 1.5 seconds <em>before</em> the browser tries to make a million SVG marks - which is why the point
+charts cap what they draw.</li>
+<li><strong>Selecting half of a big dataset is the slowest ordinary thing</strong>, because the answer is a list of five million row ids. A selection that large is rarely what you want to
+wire to another chart; a smaller one is proportionally quicker.</li>
+</ul>
+<h2 id="structures-memory-and-build-time">Structures: memory and build time</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Molecules</th>
+<th style="text-align: right">Imported in</th>
+<th style="text-align: right">Index built in</th>
+<th style="text-align: right">Table (structures as text)</th>
+<th style="text-align: right">Structure index</th>
+<th style="text-align: right">In a browser tab, if loaded there</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1,000</td>
+<td style="text-align: right">1.1 s</td>
+<td style="text-align: right">1.1 s</td>
+<td style="text-align: right">1.6 MB</td>
+<td style="text-align: right">1.7 MB</td>
+<td style="text-align: right">5 MB</td>
+</tr>
+<tr>
+<td style="text-align: right">35,090</td>
+<td style="text-align: right">4.2 s</td>
+<td style="text-align: right">37 s</td>
+<td style="text-align: right">61 MB</td>
+<td style="text-align: right">59 MB</td>
+<td style="text-align: right">376 MB</td>
+</tr>
+<tr>
+<td style="text-align: right">105,270</td>
+<td style="text-align: right">9.4 s</td>
+<td style="text-align: right">76 s</td>
+<td style="text-align: right">182 MB</td>
+<td style="text-align: right">177 MB</td>
+<td style="text-align: right">about 1.1 GB</td>
+</tr>
+<tr>
+<td style="text-align: right">315,810</td>
+<td style="text-align: right">25 s</td>
+<td style="text-align: right">187 s</td>
+<td style="text-align: right">546 MB</td>
+<td style="text-align: right">517 MB</td>
+<td style="text-align: right">about 3.4 GB</td>
+</tr>
+</tbody>
+</table>
+<p>(The browser figure for 35,090 molecules was measured; the larger two are scaled from it, because the repeated files share their text and would understate the memory.)</p>
+<p>The index is <strong>about the same size as the table</strong>: a little under 2 KB a molecule for each. Building it takes <strong>0.6 to 1 millisecond per molecule</strong>. Importing does not
+build it, which is why importing is quick and indexing is a separate step you choose.</p>
+<h2 id="structures-how-long-a-search-takes">Structures: how long a search takes</h2>
+<p>Median milliseconds, in the data centre, for a search on the indexed structures.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Molecules</th>
+<th style="text-align: right">Substructure, common pattern (a benzene ring)</th>
+<th style="text-align: right">Substructure, [Cl,Br,I]</th>
+<th style="text-align: right">Substructure, rare (a carboxylic acid)</th>
+<th style="text-align: right">Similarity above 0.4</th>
+<th style="text-align: right">Similarity above 0.8</th>
+<th style="text-align: right">A page of 50 cards</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1,000</td>
+<td style="text-align: right">34</td>
+<td style="text-align: right">32</td>
+<td style="text-align: right">30</td>
+<td style="text-align: right">21</td>
+<td style="text-align: right">21</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">35,090</td>
+<td style="text-align: right">372</td>
+<td style="text-align: right">286</td>
+<td style="text-align: right">117</td>
+<td style="text-align: right">52</td>
+<td style="text-align: right">44</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">105,270</td>
+<td style="text-align: right">935</td>
+<td style="text-align: right">696</td>
+<td style="text-align: right">348</td>
+<td style="text-align: right">136</td>
+<td style="text-align: right">114</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">315,810</td>
+<td style="text-align: right">2,736</td>
+<td style="text-align: right">1,802</td>
+<td style="text-align: right">1,358</td>
+<td style="text-align: right">368</td>
+<td style="text-align: right">299</td>
+<td style="text-align: right">3</td>
+</tr>
+</tbody>
+</table>
+<p>For comparison, searching the same molecules <strong>without</strong> the data centre, in the browser with RDKit, costs about 0.4 ms for each molecule (measured on the 35,090 poses, where it
+took about 15 seconds): roughly <strong>0.4 s</strong> for 1,000 molecules, <strong>14 s</strong> for 35,090, and <strong>two minutes</strong> for 315,810, every time, plus having every structure in the browser to
+test. The indexed searches above are between 10 and 300 times quicker at those sizes, and the gap widens with size.</p>
+<p>How to read them:</p>
+<ul>
+<li><strong>A page of cards costs the same at every size.</strong> Only the 50 structures on screen are fetched.</li>
+<li><strong>Similarity is the quickest search</strong> and grows roughly in step with the number of molecules: the index finds the molecules above the threshold without comparing every pair.</li>
+<li><strong>Substructure depends on how many molecules match.</strong> The index discards the molecules that cannot match, and the survivors are tested exactly, so a common pattern (two thirds of the
+molecules here contain a benzene ring) costs several times what a rare one does, and part of its time is sending back the ids of 207,000 hits. A selective pattern is fast
+at any size.</li>
+</ul>
+<h2 id="limits-today">Limits today</h2>
+<ul>
+<li><strong>Every database statement has a time limit, and a job’s is longer than a chart’s.</strong> A question a chart asks is cancelled after <strong>60 seconds</strong> (nothing on this page comes close:
+the slowest, a box plot of ten million rows, is about 18). A statement inside a <strong>job</strong> - an import, an index build, an edit, a join, a filter - is cancelled after <strong>30 minutes</strong>,
+because jobs have long steps: the first step of building a structure index, which reads every molecule and builds its fingerprint, took 94 seconds for 315,810 molecules. An
+index of that size therefore builds (187 seconds in all, as the table shows), and by that step’s rate the limit would be reached only at several million molecules. An administrator
+can change either limit, or remove it, with two settings of the application’s pod (<code>DATA_CENTRE_STATEMENT_TIMEOUT</code> and <code>DATA_CENTRE_JOB_STATEMENT_TIMEOUT</code>, in seconds).</li>
+<li><strong>The very largest grouped charts take seconds, not milliseconds.</strong> At ten million rows a hexbin or box plot is about 15 to 18 seconds. They still work, and they leave the browser
+idle, but you will wait for them; at a million rows or fewer they are around a second or less.</li>
+<li><strong>Applying a filter reads every row</strong> to work out which to hide, so it is slower than the charts that follow it: about 12 seconds for a million rows. Clearing one takes about a second.</li>
+<li><strong>The tables hold what you imported, plus what you add.</strong> Calculated columns, properties and indexes add to the sizes shown above. For a column of a million numbers, a B-tree index
+is about 22 MB and builds in under a second, a hash index about 34 MB and about a second, and a BRIN index 24 KB in a third of a second (BRIN is tiny because it only records a
+range for each block of rows; it helps when the numbers are stored roughly in order, and not for a column of random values like this one).</li>
+</ul>
+</div><footer class="sl-flex astro-i3kxhrqf"><div class="meta sl-flex astro-i3kxhrqf"></div><div class="pagination-links print:hidden astro-izbs4kne" dir="ltr"><a href="/squonk2-viz-docs/latest/data-centre/charts/" rel="prev" class="astro-izbs4kne"><svg aria-hidden="true" class="astro-izbs4kne astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-izbs4kne">Previous<br class="astro-izbs4kne"><span class="link-title astro-izbs4kne">How charts get their data</span></span></a><a href="/squonk2-viz-docs/latest/design-tab/" rel="next" class="astro-izbs4kne"><svg aria-hidden="true" class="astro-izbs4kne astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-izbs4kne">Next<br class="astro-izbs4kne"><span class="link-title astro-izbs4kne">The design tab</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>

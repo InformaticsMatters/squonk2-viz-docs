@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-662bn5iw"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Data components | Squonk Visualisation Designer</title><link rel="canonical" href="https://informaticsmatters.github.io/squonk2-viz-docs/latest/components/data/"/><link rel="sitemap" href="/squonk2-viz-docs/latest/sitemap-index.xml"/><link rel="shortcut icon" href="/squonk2-viz-docs/latest/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.2.10"/><meta name="generator" content="Starlight v0.42.0"/><meta property="og:title" content="Data components"/><meta property="og:type" content="article"/><meta property="og:url" content="https://informaticsmatters.github.io/squonk2-viz-docs/latest/components/data/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Dataset, Data Joiner, Calculated Fields and FileSelector — where data comes from and how it is reshaped."/><meta property="og:site_name" content="Squonk Visualisation Designer"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Dataset, Data Joiner, Calculated Fields and FileSelector — where data comes from and how it is reshaped."/><script>
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-662bn5iw"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Data | Squonk Visualisation Designer</title><link rel="canonical" href="https://informaticsmatters.github.io/squonk2-viz-docs/latest/components/data/"/><link rel="sitemap" href="/squonk2-viz-docs/latest/sitemap-index.xml"/><link rel="shortcut icon" href="/squonk2-viz-docs/latest/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.2.10"/><meta name="generator" content="Starlight v0.42.0"/><meta property="og:title" content="Data"/><meta property="og:type" content="article"/><meta property="og:url" content="https://informaticsmatters.github.io/squonk2-viz-docs/latest/components/data/"/><meta property="og:locale" content="en"/><meta property="og:description" content="The Data tab — importing, reshaping and exporting datasets — and the Dataset and FileSelector nodes that bring them into a design."/><meta property="og:site_name" content="Squonk Visualisation Designer"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="The Data tab — importing, reshaping and exporting datasets — and the Dataset and FileSelector nodes that bring them into a design."/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -38,7 +38,7 @@
 	})();
 </script><script type="module" src="/squonk2-viz-docs/latest/_astro/Search.astro_astro_type_script_index_0_lang.CZcReF4N.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-pdjqjl4q"><div class="sl-flex social-icons astro-pdjqjl4q"></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="dark" class="astro-sxvfdy4f">Dark</option><option value="light" class="astro-sxvfdy4f">Light</option><option value="auto" selected class="astro-sxvfdy4f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
 	StarlightThemeProvider.updatePickers();
-</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-tqqijxs2" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-oiov4szm"><svg aria-hidden="true" class="open-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-oiov4szm">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super(),matchMedia(`(min-width: 50em)`).addEventListener(`change`,()=>this.hidePopover()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><script type="module">var e=class extends HTMLElement{connectedCallback(){let e=this.querySelector(`select`),t=this.dataset.root,n=this.dataset.current;!e||!t||!n||(e.addEventListener(`change`,e=>{let r=e.currentTarget;r instanceof HTMLSelectElement&&this.#t(t,n,r.value)}),this.#e(e,`${t}versions.json`,n))}async#e(e,t,n){let r;try{let e=await fetch(t);if(!e.ok)return;r=(await e.json()).versions??[]}catch{return}r.length<2||e.replaceChildren(...r.map(({id:e,title:t})=>new Option(t??e,e,e===n,e===n)))}async#t(e,t,n){if(n===t)return;let r=`${e}${t}`,{pathname:i}=window.location,a=`${e}${n}${i.startsWith(r)&&i.slice(r.length)||`/`}`,o=`${e}${n}/`;if(a===o){window.location.assign(o);return}try{let e=await fetch(a,{method:`HEAD`});window.location.assign(e.ok?a:o)}catch{window.location.assign(o)}}};customElements.define(`starlight-version-select`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-tqqijxs2"><div class="sidebar-content sl-flex astro-tqqijxs2"><div class="version-select astro-wv7whodv"><starlight-version-select data-root="/squonk2-viz-docs/" data-current="latest"><label style="--sl-select-width: 11em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select documentation version</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 6.06a3 3 0 0 0-1.15 5.77A2 2 0 0 1 14 13.06h-4a4 4 0 0 0-2 .56V7.88a3 3 0 1 0-2 0v8.36a3 3 0 1 0 2.16.05A2 2 0 0 1 10 15.06h4a4 4 0 0 0 3.91-3.16A3 3 0 0 0 17 6.06m-10-2a1 1 0 1 1-1 1 1 1 0 0 1 1-1m0 16a1 1 0 1 1 1-1 1 1 0 0 1-1 1m10-10a1 1 0 1 1 1-1 1 1 0 0 1-1 1"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="latest" selected class="astro-sxvfdy4f">latest</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-version-select></div><sl-sidebar-state-persist data-hash="0d7mh5h" class="astro-l6ovzziu"><script aria-hidden="true">
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-tqqijxs2" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-oiov4szm"><svg aria-hidden="true" class="open-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-oiov4szm astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-oiov4szm">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super(),matchMedia(`(min-width: 50em)`).addEventListener(`change`,()=>this.hidePopover()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><script type="module">var e=class extends HTMLElement{connectedCallback(){let e=this.querySelector(`select`),t=this.dataset.root,n=this.dataset.current;!e||!t||!n||(e.addEventListener(`change`,e=>{let r=e.currentTarget;r instanceof HTMLSelectElement&&this.#t(t,n,r.value)}),this.#e(e,`${t}versions.json`,n))}async#e(e,t,n){let r;try{let e=await fetch(t);if(!e.ok)return;r=(await e.json()).versions??[]}catch{return}r.length<2||e.replaceChildren(...r.map(({id:e,title:t})=>new Option(t??e,e,e===n,e===n)))}async#t(e,t,n){if(n===t)return;let r=`${e}${t}`,{pathname:i}=window.location,a=`${e}${n}${i.startsWith(r)&&i.slice(r.length)||`/`}`,o=`${e}${n}/`;if(a===o){window.location.assign(o);return}try{let e=await fetch(a,{method:`HEAD`});window.location.assign(e.ok?a:o)}catch{window.location.assign(o)}}};customElements.define(`starlight-version-select`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-tqqijxs2"><div class="sidebar-content sl-flex astro-tqqijxs2"><div class="version-select astro-wv7whodv"><starlight-version-select data-root="/squonk2-viz-docs/" data-current="latest"><label style="--sl-select-width: 11em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select documentation version</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 6.06a3 3 0 0 0-1.15 5.77A2 2 0 0 1 14 13.06h-4a4 4 0 0 0-2 .56V7.88a3 3 0 1 0-2 0v8.36a3 3 0 1 0 2.16.05A2 2 0 0 1 10 15.06h4a4 4 0 0 0 3.91-3.16A3 3 0 0 0 17 6.06m-10-2a1 1 0 1 1-1 1 1 1 0 0 1 1-1m0 16a1 1 0 1 1 1-1 1 1 0 0 1-1 1m10-10a1 1 0 1 1 1-1 1 1 0 0 1-1 1"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="latest" selected class="astro-sxvfdy4f">latest</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-version-select></div><sl-sidebar-state-persist data-hash="17blq5k" class="astro-l6ovzziu"><script aria-hidden="true">
 		(() => {
 			try {
 				if (!matchMedia('(min-width: 50em)').matches) return;
@@ -61,7 +61,7 @@
 				);
 			} catch {}
 		})();
-	</script><ul class="top-level astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Home</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/getting-started/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Getting started</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/design-tab/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">The design tab</span></a></li><li class="astro-hv37hqxh"><details open class="astro-hv37hqxh"><summary class="astro-hv37hqxh"><span class="group-label astro-hv37hqxh"><span class="large astro-hv37hqxh">Components</span></span><svg aria-hidden="true" class="caret astro-hv37hqxh astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Overview</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/data/" aria-current="page" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Data components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/charts/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Chart components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/molecular/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Molecular components</span></a></li></ul></details></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/views/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Views</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/settings/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Settings</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/wiring-patterns/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Wiring patterns</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/reference/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Reference</span></a></li></ul><script aria-hidden="true">
+	</script><ul class="top-level astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Home</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/getting-started/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Getting started</span></a></li><li class="astro-hv37hqxh"><details open class="astro-hv37hqxh"><summary class="astro-hv37hqxh"><span class="group-label astro-hv37hqxh"><span class="large astro-hv37hqxh">The data centre</span></span><svg aria-hidden="true" class="caret astro-hv37hqxh astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Overview</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/why-a-database/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Why a database</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/postgres-and-rdkit/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Why PostgreSQL and RDKit</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/molecules/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">How molecules are stored</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/joins/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">How a join works</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/charts/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">How charts get their data</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/data-centre/performance/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Performance</span></a></li></ul></details></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/design-tab/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">The design tab</span></a></li><li class="astro-hv37hqxh"><details open class="astro-hv37hqxh"><summary class="astro-hv37hqxh"><span class="group-label astro-hv37hqxh"><span class="large astro-hv37hqxh">Components</span></span><svg aria-hidden="true" class="caret astro-hv37hqxh astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-hv37hqxh"><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Overview</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/data/" aria-current="page" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Data components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/charts/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Chart components</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/components/molecular/" class="astro-hv37hqxh"><span class="astro-hv37hqxh">Molecular components</span></a></li></ul></details></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/views/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Views</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/settings/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Settings</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/wiring-patterns/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Wiring patterns</span></a></li><li class="astro-hv37hqxh"><a href="/squonk2-viz-docs/latest/reference/" class="large astro-hv37hqxh"><span class="astro-hv37hqxh">Reference</span></a></li></ul><script aria-hidden="true">
 		(() => {
 			const scroller = document.getElementById('starlight__sidebar');
 			if (!window._starlightScrollRestore || !scroller) return;
@@ -70,44 +70,308 @@
 		})();
 	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-d4p4vjat"><div class="social-icons astro-d4p4vjat"></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-sxvfdy4f"><span class="sr-only astro-sxvfdy4f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-sxvfdy4f"><option value="dark" class="astro-sxvfdy4f">Dark</option><option value="light" class="astro-sxvfdy4f">Light</option><option value="auto" selected class="astro-sxvfdy4f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-sxvfdy4f astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
 	StarlightThemeProvider.updatePickers();
-</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-tqqijxs2"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-5uhixysx"><aside class="right-sidebar-container print:hidden astro-5uhixysx"><div class="right-sidebar astro-5uhixysx"><div class="lg:sl-hidden astro-zzxvhyjq"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-k5kj7fg6"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-k5kj7fg6"><details id="starlight__mobile-toc" class="astro-k5kj7fg6"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-k5kj7fg6"><span class="toggle sl-flex astro-k5kj7fg6">On this page<svg aria-hidden="true" class="caret astro-k5kj7fg6 astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-k5kj7fg6"></span></summary><div class="dropdown astro-k5kj7fg6"><ul class="isMobile astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#dataset" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Dataset</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#data-joiner" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Data Joiner</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#calculated-fields" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Calculated Fields</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#fileselector" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">FileSelector</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.2hy4wuwT.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-zzxvhyjq"><div class="sl-container astro-zzxvhyjq"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#dataset" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Dataset</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#data-joiner" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Data Joiner</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#calculated-fields" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Calculated Fields</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#fileselector" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">FileSelector</span></a></li></ul></nav></starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/TableOfContents.astro_astro_type_script_index_0_lang.B-fMLk95.js"></script></div></div></div></aside><div class="main-pane astro-5uhixysx"><main data-pagefind-body class="astro-662bn5iw" lang="en" dir="ltr"><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><h1 id="_top" class="astro-rrzsxf3y">Data components</h1></div></div><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><div class="sl-markdown-content"><p>Data nodes have <strong>blue</strong> title bars and live under <strong>+ Data</strong>. None of them
-draws anything: they produce the datasets and files that the chart and
-molecular components consume.</p>
-<h2 id="dataset">Dataset</h2>
-<p>Reads one of the project’s data files. This is usually the first node you add,
-because every chart needs one.</p>
-<p><img alt="A Dataset node: a dropdown showing the chosen file, then its fields with a type chip beside each — integer, molecule, string, float — and an Edit schema link." loading="lazy" decoding="async" width="556" height="748" src="/squonk2-viz-docs/latest/_astro/node-dataset.D5NiEhaG_Mu6iJ.webp"></p>
-<p>Pick a file from the dropdown. The application scans it — a spinner shows while
-it does — and then lists the fields it found with the type it inferred for
-each: <code>integer</code>, <code>float</code>, <code>string</code>, or <code>molecule</code> for a column holding
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-tqqijxs2"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-5uhixysx"><aside class="right-sidebar-container print:hidden astro-5uhixysx"><div class="right-sidebar astro-5uhixysx"><div class="lg:sl-hidden astro-zzxvhyjq"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-k5kj7fg6"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-k5kj7fg6"><details id="starlight__mobile-toc" class="astro-k5kj7fg6"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-k5kj7fg6"><span class="toggle sl-flex astro-k5kj7fg6">On this page<svg aria-hidden="true" class="caret astro-k5kj7fg6 astro-inidd62f" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-k5kj7fg6"></span></summary><div class="dropdown astro-k5kj7fg6"><ul class="isMobile astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#the-data-tab" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">The Data tab</span></a><ul class="isMobile astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#importing-a-file" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Importing a file</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#jobs" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Jobs</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#changing-a-dataset-and-making-a-new-one" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Changing a dataset, and making a new one</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#export" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Export</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#delete" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Delete</span></a></li></ul></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#filtering-rows" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Filtering rows</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#indexing-structures" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Indexing structures</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#about-the-database" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">About the database</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#calculating-molecular-properties" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Calculating molecular properties</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#editing-fields" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Editing fields</span></a><ul class="isMobile astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#changing-a-type" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Changing a type</span></a></li></ul></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#joining-datasets" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Joining datasets</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#calculating-fields" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Calculating fields</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#dataset-node" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Dataset node</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#fileselector" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">FileSelector</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.2hy4wuwT.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-zzxvhyjq"><div class="sl-container astro-zzxvhyjq"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-ykysk6h6" style="--depth: 0;"><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#_top" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Overview</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#the-data-tab" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">The Data tab</span></a><ul class="astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#importing-a-file" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Importing a file</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#jobs" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Jobs</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#changing-a-dataset-and-making-a-new-one" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Changing a dataset, and making a new one</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#export" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Export</span></a></li><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#delete" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Delete</span></a></li></ul></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#filtering-rows" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Filtering rows</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#indexing-structures" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Indexing structures</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#about-the-database" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">About the database</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#calculating-molecular-properties" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Calculating molecular properties</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#editing-fields" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Editing fields</span></a><ul class="astro-ykysk6h6" style="--depth: 1;"><li style="--depth: 1;" class="astro-ykysk6h6"><a href="#changing-a-type" style="--depth: 1;" class="astro-ykysk6h6"><span style="--depth: 1;" class="astro-ykysk6h6">Changing a type</span></a></li></ul></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#joining-datasets" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Joining datasets</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#calculating-fields" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Calculating fields</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#dataset-node" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">Dataset node</span></a></li><li style="--depth: 0;" class="astro-ykysk6h6"><a href="#fileselector" style="--depth: 0;" class="astro-ykysk6h6"><span style="--depth: 0;" class="astro-ykysk6h6">FileSelector</span></a></li></ul></nav></starlight-toc><script type="module" src="/squonk2-viz-docs/latest/_astro/TableOfContents.astro_astro_type_script_index_0_lang.B-fMLk95.js"></script></div></div></div></aside><div class="main-pane astro-5uhixysx"><main data-pagefind-body class="astro-662bn5iw" lang="en" dir="ltr"><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><h1 id="_top" class="astro-rrzsxf3y">Data</h1></div></div><div class="content-panel astro-zcx5zhi7"><div class="sl-container astro-zcx5zhi7"><div class="sl-markdown-content"><blockquote>
+<p>Want to know what happens to your data out of sight - why it is kept in a database, how structures are indexed, how a histogram is counted? That is in
+<a href="../../data-centre/">The data centre</a>. You do not need it to use anything on this page.</p>
+</blockquote>
+<p>Data comes in two steps. You <strong>make datasets on the Data tab</strong>; you then <strong>use
+them on the Design tab</strong>, where a Dataset node picks one and charts draw from it.
+Nothing on the Design tab reads a file or reshapes data any more — if you have a
+design from an earlier version with a Data Joiner or Calculated Fields node, it
+still opens, but those nodes are dropped (the application says so once), and you
+make the join or the columns on the Data tab instead.</p>
+<h2 id="the-data-tab">The Data tab</h2>
+<p>The Data tab is the first tab. It lists every dataset in the project’s data
+store with its row count and number of fields, and marks the ones that hold
 structures.</p>
-<p>Those types matter, because they decide what each field can be used for. Only
-numeric fields are offered as axes; only a <code>molecule</code> field can be a structure
-field. Where the scan gets one wrong — a compound identifier made of digits
-that should be treated as a label — <strong>Edit schema…</strong> corrects it.</p>
-<p><strong>Output:</strong> <code>dataset</code>.</p>
-<h2 id="data-joiner">Data Joiner</h2>
-<p>Combines two or more datasets into one, matching rows on a key column, so a
-chart can draw on columns from several files at once.</p>
-<p><img alt="A DataJoiner node with a Join mode dropdown set to Inner, and a key-column dropdown for each of its two inputs, the first marked primary." loading="lazy" decoding="async" width="540" height="402" src="/squonk2-viz-docs/latest/_astro/node-data-joiner.JvDoHmAS_Z18yoHy.webp"></p>
-<p>Connect each dataset to one of the joiner’s inputs; a spare input appears each
-time, so you can keep adding. Then choose:</p>
+<p>Click a dataset to see a <strong>Preview</strong> of its rows beneath the list, a page at a
+time. A dataset with more than twelve fields opens on the first twelve; press
+<strong>Show all N fields</strong> beside the row count to see the rest (a column you have
+just added is at the end), and <strong>Show first 12</strong> to go back. A structure is shown as <em>(structure)</em> and a
+missing value as —. The <strong>⋮</strong> at the end of a row opens the actions for that
+dataset: <strong>Preview</strong>, <strong>Export CSV</strong>, <strong>Export SDF</strong>, <strong>Index structures…</strong>,
+<strong>Calculate fields…</strong>, <strong>Calculate molecular properties…</strong>, <strong>Filter…</strong>,
+<strong>Clear filter</strong> and <strong>Make filter permanent…</strong> (these two only while the dataset has a filter), <strong>Edit fields…</strong>, <strong>Join with…</strong> and <strong>Delete…</strong>.
+A dataset whose structures have been indexed carries an <em>indexed</em> mark beside <em>structures</em>; hover over it to see how. A dataset with a filter on shows how many
+of its rows you can see (<em>1,245 of 35,090</em>) and a <em>filtered</em> mark.</p>
+<h3 id="importing-a-file">Importing a file</h3>
+<p><strong>Import…</strong> opens a dialog listing the CSV and SDF files in the project (gzipped
+ones included). Choose one, give the dataset a name, and press <strong>Import</strong>. The
+types of the columns are worked out from <strong>every</strong> value in the file, not a
+sample, so a number that only shows up late in the file cannot turn a column
+into text half way through.</p>
+<p>You do not have to put the file in the project first. The same dialog can
+<strong>upload</strong> a file from your computer (<strong>Choose file…</strong>), or import one from a
+<strong>URL</strong>. The server downloads that, so the address must be <code>https://</code> and
+reachable from the internet; addresses inside a private network are refused.
+Either way the file is a temporary copy that is removed once the dataset is
+made, and nothing is added to the project’s files. A file larger than the
+server’s limit (2 GB unless the administrator changed it) is refused.</p>
+<p>If the name is already taken the dialog says it <strong>replaces</strong> that dataset. A
+failed or cancelled import leaves the old one exactly as it was.</p>
+<h3 id="jobs">Jobs</h3>
+<p>Importing, calculating, editing fields, filtering and joining all run as <strong>jobs</strong>. A panel
+beneath the list shows each one with a progress bar and what it is doing, and a
+large one can be cancelled part way. When a job finishes, its dataset (new, or
+changed in place) is up to date in the list and the Design tab sees it straight
+away; <strong>Dismiss</strong> clears a job from the panel. Only one job at a time runs on a
+dataset: starting another while one is running is refused.</p>
+<h3 id="changing-a-dataset-and-making-a-new-one">Changing a dataset, and making a new one</h3>
+<p><strong>Calculate fields…</strong>, <strong>Calculate molecular properties…</strong>, <strong>Edit fields…</strong> and <strong>Filter…</strong> change the dataset itself. It keeps its name, its rows and
+their ids, so every chart and Dataset node that uses it carries on, with nothing to point at something new. The columns appear when the job is done; until
+then the dataset is exactly as it was, and if the job fails or you cancel it, it still is. These ask for no name.</p>
+<p><strong>Join with…</strong> makes a <em>new</em> dataset, because a joined row is a combination of rows: it asks for a name (offering one such as <code>compounds-joined</code>), so a
+mistake costs nothing and you can keep every stage. Naming an existing dataset replaces it, and the dialog says so before you press the button.</p>
+<p>Because these are made to the dataset itself, there is no copy to throw away if one was a mistake. A calculated column can’t be given the name of a field
+the dataset already has. A column you no longer want can be deleted with <a href="#editing-fields"><strong>Edit fields…</strong></a>, which is for good; <strong>Make filter permanent…</strong>
+likewise deletes rows for good, and each asks before it does. If you may want to keep the original, export it first.</p>
+<h3 id="export">Export</h3>
+<p><strong>Export CSV</strong> downloads the dataset as it is: if a filter is on, the rows it shows. <strong>Export SDF</strong> is offered for a
+dataset with structures and writes them back out with their properties. The file
+is streamed by the server, so exporting a large dataset does not load it into
+your browser.</p>
+<h3 id="delete">Delete</h3>
+<p><strong>Delete…</strong> removes the dataset, after asking. A saved design that draws from it
+shows no data in those charts until a dataset of that name exists again.
+Datasets made <em>from</em> it are separate and are not affected.</p>
+<h2 id="filtering-rows">Filtering rows</h2>
+<p><strong>Filter…</strong> hides the rows that fail your criteria. Nothing is copied or deleted: the dataset keeps its name, its rows and their ids, and every chart that
+uses it, the preview, an export and a join see only the rows that pass. This is not the same as selecting points on a chart, which is for exploring; a
+filter changes what the dataset <em>is</em> until you take it off. The Dataset node of a filtered dataset says how many rows it is showing.</p>
 <ul>
-<li><strong>Join</strong> — <em>Inner</em> keeps only rows that matched, <em>Left outer</em> keeps every row
-of the first input, <em>Full outer</em> keeps everything from both.</li>
-<li><strong>A key column for each input</strong> — the column whose values are matched.</li>
+<li><strong>To change it</strong>, choose <strong>Filter…</strong> again. The dialog opens on the filter that is applied. A new filter <strong>replaces</strong> the old one and is worked out over
+<strong>all</strong> of the rows, so rows the old filter hid can come back.</li>
+<li><strong>To remove it</strong>, choose <strong>Clear filter</strong>. Every row is shown again. Nothing was lost.</li>
+<li><strong>To keep it for good</strong>, choose <strong>Make filter permanent…</strong>. This <strong>deletes</strong> the rows the filter hides, after telling you exactly how many, and cannot be
+undone. The dataset is then just the rows that are left and has no filter. It is refused when the filter hides nothing, or would leave no rows at all. If the
+dataset’s structures are <a href="#indexing-structures">indexed</a>, the index loses the entries for the deleted molecules, except any a joined dataset made from this one still uses.</li>
 </ul>
-<p>The first input connected is marked <strong>(primary)</strong>: its rows lead, and where two
-inputs have a column of the same name the other one is prefixed with its node’s
-name to keep them apart. That is a good reason to rename your dataset nodes.</p>
-<p><strong>Inputs:</strong> <code>dataset</code> × N. <strong>Output:</strong> <code>dataset</code>.</p>
-<h2 id="calculated-fields">Calculated Fields</h2>
-<p>Adds columns worked out row by row from the columns already there. Put it
-between a dataset (or a joiner) and whatever comes after, and every chart
-downstream offers the new columns as if they had been in the file.</p>
-<p><img alt="A CalculatedFields node, summarising the two columns it adds and carrying a pencil button to edit them." loading="lazy" decoding="async" width="816" height="286" src="/squonk2-viz-docs/latest/_astro/node-calculated-fields.CaCSdlw-_Z1CGAOF.webp"></p>
-<p>Click the <strong>✎</strong> to open the editor and <strong>+ Add column</strong> for each one.</p>
+<p>A filter is a snapshot: a row limit such as <em>top 500 by SCORE</em> ranks the rows at the moment you apply it, and neither it nor a condition is re-worked when
+you later calculate a column or change a type. Calculated columns, molecular properties and type changes are made for <strong>every</strong> row, hidden or not, so they
+are all there when you clear the filter. While a filter is on, the dialog’s live count is taken over a sample of the rows you can see.</p>
+<p>Two things can narrow it, and they work together:</p>
+<ul>
+<li>
+<p><strong>Conditions</strong> — one per row, such as <code>SCORE &lt; -30</code>. <strong>+ Add condition</strong>
+adds another, and <strong>every</strong> condition must hold for a row to be kept, so
+building a filter up is a matter of adding rows rather than lengthening one
+expression. Each row is checked on its own, so a mistake is reported against
+the row that has it. Use <code>or</code> <em>within</em> a row for alternatives:
+<code>Series == 'A' or Series == 'B'</code>.</p>
+<p>Click a field name to insert it and use the operator buttons, or type. A
+true/false column is a test on its own — write <code>active</code>, or <code>not active</code>.</p>
+</li>
+<li>
+<p><strong>A row limit</strong> — <em>keep the top 500 by value of SCORE</em>. Set both how many
+rows and which field to rank on; the limit takes effect once it has both.
+It ranks on the field’s <strong>value</strong>, not on position in the file, so it is “the
+best 500”, not “the first 500”. The rows come back in file order; sort a
+chart however you like afterwards.</p>
+</li>
+</ul>
+<p>Press <strong>Apply</strong>. While you type, the dialog says how many of a sample of the rows
+match, so you can tell a promising filter from a mistaken one before committing.</p>
+<p><strong>A row with no value in a field being compared is left out.</strong> <code>SCORE &lt; -30</code>
+skips a pose with no score — and so does <code>not (SCORE &lt; -30)</code>, because there is
+still nothing to compare. If you want the ones without a score, ask for them:
+<code>isblank(SCORE)</code>. <code>notblank(SCORE)</code> is the opposite, and
+<code>notblank(SCORE) and not (SCORE &lt; -30)</code> is “has a score, and it is not under
+−30”.</p>
+<p>Text is compared with quotes — <code>Series == 'A'</code> — and <code>contains(name, 'acid')</code>,
+<code>startswith(...)</code> and <code>endswith(...)</code> match within it. Comparisons are
+case-sensitive.</p>
+<h2 id="indexing-structures">Indexing structures</h2>
+<p>A structure is stored as text when a file is imported. That is all that drawing it needs, so a molecule grid, the 3D viewer, the interaction charts and the
+R-group table all work straight away, and an import of a large SDF file is quick. What text cannot do is be <strong>searched</strong>: a substructure or a similarity
+search has to be answered by the database, which needs the structures <strong>indexed</strong> first.</p>
+<p><strong>Index structures…</strong> (on a dataset that holds structures) builds that index. The dialog asks which <strong>fingerprints</strong> to build for similarity searching:</p>
+<ul>
+<li>a <em>kind</em> (Morgan, Feature Morgan, RDKit, Atom pair or Topological torsion),</li>
+<li>for the Morgan kinds a <em>radius</em>, and</li>
+<li>a length in <em>bits</em> (64 to 9192; 2048 is a common choice).</li>
+</ul>
+<p>It starts with Morgan, radius 2, 2048 bits. You can build several, and a similarity search uses the first. Remove them all to index for <strong>substructure search
+only</strong>. Two fingerprints of the same kind must have the same length. Indexing runs as a job and can take a while on a large dataset. The dataset itself is
+not changed, and indexing again with other fingerprints replaces the index.</p>
+<p>Until a dataset is indexed, a molecule grid built on it shows its structure-search controls greyed out, with a note saying why, and a sketch wired into it
+filters nothing. A <strong>Calculate fields…</strong>, <strong>Calculate molecular properties…</strong> or <strong>Edit fields…</strong> leaves the index as it is (deleting the structures field in <strong>Edit fields…</strong> is the exception: it deletes the index too), and a <strong>Filter…</strong> does not touch it either (the hidden rows are simply not searched; <strong>Make filter permanent…</strong> does remove the entries of the molecules it deletes, unless a joined dataset still uses them). A <strong>Join with…</strong> gives the new dataset
+the same index rather than building another, for the first dataset that has one.</p>
+<h2 id="about-the-database">About the database</h2>
+<p><strong>About database…</strong>, at the top of the Data tab, shows how big this project’s tables are and how much of that is dead space. It is there when the project’s data lives in a
+database (the Data Manager’s app does; the demo gallery’s in-browser datasets do not). Everything in it is about <strong>this project</strong> only.</p>
+<p>It lists every table, largest first (click a column heading to sort by it, and again to reverse): each dataset, the table behind each <a href="#indexing-structures">structure index</a> (with the datasets that use it), and a few internal
+tables the service keeps for itself. For each you see:</p>
+<ul>
+<li><strong>Size</strong> and, separately, the part of it taken by indexes.</li>
+<li><strong>Rows</strong> and <strong>Dead</strong> rows. A row that has been deleted, or replaced by a newer version of itself, stays on disk as a <em>dead</em> row until the space is reclaimed. Dead is
+shown in colour once a fifth of a table is dead.</li>
+<li><strong>Last vacuum</strong>: when the table was last cleaned up, by you or by the database itself.</li>
+<li>For a dataset with a filter on, how many rows the filter is hiding. <a href="#filtering-rows">Making the filter permanent</a> would delete them.</li>
+</ul>
+<p>The database cleans up on its own, so you rarely need to do anything. Two buttons are there for when you do:</p>
+<ul>
+<li><strong>Vacuum</strong> makes the space of dead rows reusable and refreshes the statistics the database uses to plan queries. It runs while the table is in use, and it does not
+make the files smaller: the space is kept for new rows. <strong>Vacuum all</strong> does every table.</li>
+<li><strong>Compact</strong> rewrites the table and its indexes into new files, which <strong>gives the disk space back</strong>. Use it after deleting a lot of rows, for example after making a
+filter permanent. It asks first, because it holds the table exclusively while it runs: a chart reading the table waits, and if the table is in use at that moment the
+job stops with a message and changes nothing. If something else is still working with older versions of the rows while it runs, it cannot remove every dead row;
+run it again when the project is quiet.</li>
+</ul>
+<p>Both run as jobs, listed with the others, and the numbers refresh when they finish. Only one maintenance job runs at a time.</p>
+<h2 id="calculating-molecular-properties">Calculating molecular properties</h2>
+<p><strong>Calculate molecular properties…</strong> (on a dataset that holds structures) adds RDKit properties as new columns, worked out from the structure of each row.
+Unlike a search it does not need the structures indexed. Choose the <strong>structure field</strong> (the first is offered) and tick the properties you want. The columns
+are added to the dataset itself, after the ones it has, and its rows and their ids are unchanged.</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size</td>
+<td>molecular weight, exact mass, atom count, heavy atom count, heteroatom count</td>
+</tr>
+<tr>
+<td>Lipophilicity &amp; polarity</td>
+<td>logP, TPSA, Labute ASA, fraction sp3 carbons</td>
+</tr>
+<tr>
+<td>Hydrogen bonding &amp; flexibility</td>
+<td>H-bond donors, H-bond acceptors, rotatable bonds, amide bonds</td>
+</tr>
+<tr>
+<td>Rings</td>
+<td>rings, aromatic / aliphatic / saturated rings, heterocycles, aromatic / aliphatic / saturated heterocycles and carbocycles, spiro atoms, bridgehead atoms</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>molecular formula, canonical SMILES, InChI, InChIKey, Murcko scaffold</td>
+</tr>
+</tbody>
+</table>
+<p>Molecular weight, heavy atoms, logP, TPSA, H-bond donors and acceptors and rotatable bonds are ticked to start with; <strong>All</strong> and <strong>None</strong> act on a group.
+Each column is named with a <strong>prefix</strong> and the property, such as <code>RDK_logp</code> and <code>RDK_hac</code>. If the dataset already has a field of that name the dialog says so and
+the button stays disabled: change the prefix. A structure RDKit cannot read leaves its cells empty rather than stopping the job, and the dataset records how
+many there were. A molecule with no ring has no Murcko scaffold, which is also left empty. A dataset whose structures are indexed keeps its index.</p>
+<h2 id="editing-fields">Editing fields</h2>
+<p><strong>Edit fields…</strong> is the one place to tidy a dataset’s columns, mainly before you draw anything from it. The dialog has a row for every field:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Field</strong></td>
+<td>The name, which you can change.</td>
+</tr>
+<tr>
+<td><strong>SQL type</strong></td>
+<td>What the database really calls the column (<code>bigint</code>, <code>double precision</code>, <code>text</code>, <code>boolean</code>). Read-only, and read from the database, so it is never a guess.</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>The type the application treats it as (<em>string</em>, <em>integer</em>, <em>float</em>, <em>boolean</em>); change it with the menu.</td>
+</tr>
+<tr>
+<td><strong>Index</strong></td>
+<td><em>None</em>, <em>B-tree</em>, <em>Hash</em> or <em>BRIN</em>. An index makes selections and searches on that field quick on a large dataset; the kinds on offer suit the field (BRIN only for numbers).</td>
+</tr>
+<tr>
+<td>🗑</td>
+<td>Mark the field for deletion. It is struck through until you press Apply, and <strong>↶</strong> puts it back.</td>
+</tr>
+</tbody>
+</table>
+<p>Nothing happens until <strong>Apply</strong>, and then all of it happens or none of it does: if anything fails, or you cancel the job, the dataset is exactly as it was. The dialog
+says what is wrong with an edit as you type it (a name that is already taken, an index that does not suit the field).</p>
+<ul>
+<li><strong>Renaming</strong> a field changes it everywhere in the dataset, but anything <em>bound</em> to the old name (a chart’s axis, a node in a design) has to be bound to the new
+one again. The dialog warns you. A field used by the filter that is applied cannot be renamed or deleted until the filter is cleared.</li>
+<li><strong>Deleting</strong> a field removes the column and its data for good. The dialog asks once more, with the names, before it does it. Deleting the <em>structures</em> field
+also deletes the structure index, leaving a plain data table (the index is kept if another dataset, such as a join, still uses it).</li>
+<li><strong>Changing a type</strong> rebuilds the column, which also drops its index; choose one again in the same edit if you want it. Structure fields can be renamed and deleted,
+but not retyped or indexed.</li>
+<li>Fields keep their place; a calculated column you added is still at the end.</li>
+</ul>
+<h3 id="changing-a-type">Changing a type</h3>
+<p>The type of each field is worked out when a file is imported, and it decides what the field can be used for: only numeric fields are offered as axes, for
+instance. When the guess is wrong, choose the type you want. Each is rebuilt as a new column and replaces the old one, in
+the same place, only when they are all ready. A common case is a
+column of numbers that was read as text because one cell says <code>NA</code>.</p>
+<p>A field that holds structures has no type to choose: its type is what lets the structure searches work.</p>
+<p><strong>A value that does not fit the new type is left missing</strong>, rather than stopping the change, and the dataset’s source line says how many there were. So <code>NA</code>
+becomes a blank in an integer column and the rest of the column becomes numbers. What fits:</p>
+<table>
+<thead>
+<tr>
+<th>To</th>
+<th>From text</th>
+<th>From integer</th>
+<th>From float</th>
+<th>From boolean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>string</strong></td>
+<td>as it is</td>
+<td>its digits</td>
+<td>its text</td>
+<td><code>true</code> / <code>false</code></td>
+</tr>
+<tr>
+<td><strong>integer</strong></td>
+<td>a whole number, blanks ignored</td>
+<td>as it is</td>
+<td>only if it is whole (<code>3.0</code>, not <code>3.5</code>)</td>
+<td>1 / 0</td>
+</tr>
+<tr>
+<td><strong>float</strong></td>
+<td>a decimal or exponent number (<code>4.5</code>, <code>1e3</code>, <code>.5</code>)</td>
+<td>as it is</td>
+<td>as it is</td>
+<td>1 / 0</td>
+</tr>
+<tr>
+<td><strong>boolean</strong></td>
+<td><code>true</code> / <code>t</code> / <code>false</code> / <code>f</code>, any case</td>
+<td>1 is true, 0 is false</td>
+<td>1 is true, 0 is false</td>
+<td>as it is</td>
+</tr>
+</tbody>
+</table>
+<p>Integers beyond about 9 × 10¹⁵ (what the browser can hold exactly) are missing. Everything else about the dataset is unchanged: the same rows, with the same ids,
+and any structures keep their searches. A field that becomes text is treated as a category again if it has few distinct values.</p>
+<h2 id="joining-datasets">Joining datasets</h2>
+<p><strong>Join with…</strong> combines two or more datasets into one, matching rows on a key
+column, so a chart can draw on columns from several files at once.</p>
+<p>Start from the primary dataset — the one you opened the menu on — and the dialog
+lists it first. Use <strong>+ Add dataset</strong> for each further input, and for each choose the <strong>key column</strong> whose
+values are matched. Then choose which rows to <strong>Keep</strong>:</p>
+<ul>
+<li><strong>Inner</strong> — only rows whose key is in every dataset.</li>
+<li><strong>Left</strong> — every row of the first dataset, with matches from the others.</li>
+<li><strong>Full</strong> — every row from every dataset, matched where keys agree.</li>
+</ul>
+<p>A column name that two datasets share is prefixed with the name of the dataset
+it came from, to keep them apart. A row with no key value never matches. The
+joined dataset’s rows are numbered afresh, since a row is now a combination.</p>
+<p>The join is a copy made inside the database: it does not follow later changes to its inputs, it uses only the rows each input’s filter leaves, and it shares the
+first structure column’s search index with its source. <a href="../../data-centre/joins/">How a join works</a> has the detail.</p>
+<h2 id="calculating-fields">Calculating fields</h2>
+<p><strong>Calculate fields…</strong> adds columns worked out row by row from the columns
+already there. They are added to the dataset itself, so every chart that uses it
+offers them as if they had been in the file.</p>
 <p><img alt="The Calculated fields editor: two columns, pIC50 and selectivity, each with clickable field names, operator and function buttons above its expression." loading="lazy" decoding="async" width="3600" height="2500" src="/squonk2-viz-docs/latest/_astro/calculated-fields-dialog.DbLNZwot_m4N25.webp"></p>
+<p>Use <strong>+ Add column</strong> for each one.</p>
 <p>Click a field name to insert it, or type it; the operators <code>+ − × ÷ ^</code> and the
 functions <code>abs</code>, <code>ceil</code>, <code>exp</code>, <code>floor</code>, <code>ln</code>, <code>log10</code>, <code>max</code>, <code>min</code>, <code>pow</code>,
 <code>round</code>, <code>sqrt</code> are all there as buttons, and hovering one explains it.</p>
@@ -125,10 +389,27 @@ data rather than with the expression.</li>
 </ul>
 <p>Note that <code>^</code> binds more tightly than a leading minus, so <code>-2^2</code> is <code>-4</code> — the
 mathematical convention, which differs from Excel’s.</p>
-<p>The transform adds columns and changes nothing else: same rows, same order, so
-selections and filters wired across it keep working. Nodes chain, and work
-after a joiner as well as after a file.</p>
-<p><strong>Input:</strong> <code>dataset</code>. <strong>Output:</strong> <code>dataset</code>.</p>
+<p>The rows and their ids are unchanged, so a selection or filter wired across the
+dataset keeps working. You can calculate again from the columns you added, and
+join the dataset to others.</p>
+<h2 id="dataset-node">Dataset node</h2>
+<p>On the Design tab, a <strong>Dataset</strong> node picks one of the datasets on the Data tab.
+It is usually the first node you add, because every chart needs one.</p>
+<p>Choose from the dropdown; the node then lists the fields of that dataset with
+the type of each — <code>integer</code>, <code>float</code>, <code>string</code>, or <code>molecule</code> for a column
+holding structures. Those types decide what a field can be used for: only
+numeric fields are offered as axes, and only a <code>molecule</code> field can be a
+structure field. With no datasets yet the dropdown says so and points you to the
+Data tab.</p>
+<p>If a filter on the Data tab is hiding some of the dataset’s rows, the node says so
+(<em>Filtered: 120 of 3,500 rows</em>): every chart wired to it draws only those rows.
+When you rename or delete a field with <strong>Edit fields…</strong>, the node follows, and a
+chart that used the old field has to be given a field again.</p>
+<p>The node stores the dataset’s <em>name</em>, so a saved design finds its data again in a
+new instance as long as a dataset of that name exists there. Calculating, filtering
+and editing fields all change a dataset in place and keep its name, so none of them
+leaves a design pointing at the wrong dataset.</p>
+<p><strong>Output:</strong> <code>dataset</code>.</p>
 <h2 id="fileselector">FileSelector</h2>
 <p>Supplies structure files — a receptor, a reference structure — to the nodes
 that need one. It is the only way a protein reaches the 3D viewer or either of
