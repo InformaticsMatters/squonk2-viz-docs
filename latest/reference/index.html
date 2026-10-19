@@ -162,7 +162,7 @@ column with gaps is still numeric. A column holding a word where a number is
 expected — <code>NA</code>, say — is read as text. Use <strong>Edit fields…</strong> on the
 <a href="../components/data/">Data tab</a> to make that column a number.</p>
 <h2 id="where-things-are-stored">Where things are stored</h2>
-<p>Everything is inside the project, in a <code>.visualisations</code> directory:</p>
+<p>Everything you save is kept in the project’s database, beside its datasets:</p>
 <table>
 <thead>
 <tr>
@@ -172,21 +172,23 @@ expected — <code>NA</code>, say — is read as text. Use <strong>Edit fields�
 </thead>
 <tbody>
 <tr>
-<td><code>&lt;name&gt;.viz.json</code></td>
-<td>One saved visualisation: nodes, connections, views, layouts and per-chart settings</td>
+<td>A saved visualisation</td>
+<td>Nodes, connections, views, layouts and per-chart settings, with the name you gave it, who first saved it and when, and who last saved it and when</td>
 </tr>
 <tr>
-<td><code>preferences.json</code></td>
+<td>Preferences</td>
 <td>The <a href="../settings/#defaults">Defaults</a> and the named <a href="../settings/#presets">Presets</a> from Settings</td>
 </tr>
 <tr>
-<td><code>app-settings.json</code></td>
+<td>App settings</td>
 <td>Whether <a href="../settings/#auto-save">Auto save</a> is on</td>
 </tr>
 </tbody>
 </table>
 <p>Because they are in the project, they are shared with everyone who has access
-to it and outlive any one instance of the application.</p>
+to it and outlive any one instance of the application. They are not files you
+can see in the project’s file list: to take a visualisation out of the
+application, or bring one in, use <a href="../getting-started/#exporting-and-importing">Export and Import</a>.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p><strong>“No dataset connected or data not loaded”</strong> — the chart has no Dataset node
 wired to its <code>dataset</code> input, the Dataset node has no dataset chosen, or the dataset is still loading. Check
@@ -194,12 +196,15 @@ the Design tab for a missing connection, and the Data tab for the dataset.</p>
 <p><strong>A chart shows fewer rows than the dataset has</strong> — a filter on the dataset is hiding
 some (the Dataset node says <em>Filtered: N of M rows</em>, and so does the Data tab). Use
 <strong>Clear filter</strong> on the <a href="../components/data/#filtering-rows">Data tab</a> to see them all.</p>
-<p><strong>A chart lost its field after I renamed it</strong> — a chart is bound to a field by name,
-so renaming (or deleting) the field in <strong>Edit fields…</strong> leaves the chart without it.
-Choose the field again on the chart’s node.</p>
+<p><strong>“Field … is not in the dataset — renamed or deleted?”</strong> — a chart is bound to a
+field by name, so renaming (or deleting) the field in <strong>Edit fields…</strong> leaves the
+chart pointing at a name that no longer exists. The chart keeps that name rather
+than quietly switching to another field: its node shows it as <em>name (not found)</em>.
+Choose the field again, on the chart’s node or, where the message says so, in the
+chart’s ⚙ settings. Renaming the field back also restores the chart.</p>
 <p><strong>“Configure X and Y fields on the wiring canvas”</strong> — the chart’s required
 fields are not set. They are the dropdowns on the node itself, not in the ⚙.</p>
-<p><strong>“Apply a filter to display molecules”</strong> — the molecule grid or 3D viewer has
+<p><strong>“Apply a filter to display molecules”</strong> — the 3D viewer has
 <strong>Require filter</strong> on, which is the default. Wire a selection into its <code>filter</code>
 port, or turn the setting off if the dataset is small enough to draw whole.</p>
 <p><strong>“Apply a filter to compute interactions”</strong> — the same guard on an interaction
@@ -225,7 +230,7 @@ return it to <code>auto</code>. A log scale does the same to zero and negative v
 cannot use the graphics hardware. Enable hardware acceleration in the browser’s
 settings and reload.</p>
 <p><strong>A file you know is in the project is not offered.</strong> Only the extensions above
-are listed, and anything inside <code>.visualisations</code> is deliberately skipped.</p>
+are listed.</p>
 <p><strong>A FileSelector says a linked file is not available.</strong> The visualisation was
 saved against a project that had that file. Pick the file again from <strong>Add
 available file…</strong>.</p>
@@ -238,6 +243,9 @@ closed laptop lid, stops being drawn by the browser. Reveal it and it resumes.</
 <p><strong>The application stopped responding after a while.</strong> An instance left idle is
 shut down by the Data Manager. Your saved visualisations are in the project;
 launch a new instance and load them.</p>
+<p><strong>Saving says it needs the project database.</strong> This instance was started
+without one, so it can show charts but cannot keep a visualisation. Launch it
+again from the Data Manager, which provides the database.</p>
 <h2 id="known-limitations">Known limitations</h2>
 <ul>
 <li><strong>A structure drawn in a MoleculeSketcher is not saved</strong> with the

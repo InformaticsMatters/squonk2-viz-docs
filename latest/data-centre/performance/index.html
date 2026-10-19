@@ -361,6 +361,10 @@ the slowest, a box plot of ten million rows, is about 18). A statement inside a 
 because jobs have long steps: the first step of building a structure index, which reads every molecule and builds its fingerprint, took 94 seconds for 315,810 molecules. An
 index of that size therefore builds (187 seconds in all, as the table shows), and by that step’s rate the limit would be reached only at several million molecules. An administrator
 can change either limit, or remove it, with two settings of the application’s pod (<code>DATA_CENTRE_STATEMENT_TIMEOUT</code> and <code>DATA_CENTRE_JOB_STATEMENT_TIMEOUT</code>, in seconds).</li>
+<li><strong>A question that runs past the limit is stopped, and says so.</strong> You see “The query took longer than the 60 second limit. Try a narrower search or filter.” in place of the
+chart or grid it was meant for (the number is whatever limit the application is set to), and nothing is retried. The usual cause is a search that matches most of a very large
+dataset: at three million molecules, a substructure search for a pattern nearly every molecule has (a benzene ring) ran past 60 seconds, where a selective one took three or
+four. Make the pattern more specific, filter the dataset first, or ask the administrator to raise the limit.</li>
 <li><strong>The very largest grouped charts take seconds, not milliseconds.</strong> At ten million rows a hexbin or box plot is about 15 to 18 seconds. They still work, and they leave the browser
 idle, but you will wait for them; at a million rows or fewer they are around a second or less.</li>
 <li><strong>Applying a filter reads every row</strong> to work out which to hide, so it is slower than the charts that follow it: about 12 seconds for a million rows. Clearing one takes about a second.</li>

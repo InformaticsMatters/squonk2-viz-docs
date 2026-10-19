@@ -84,6 +84,7 @@ make the join or the columns on the Data tab instead.</p>
 <p>The Data tab is the first tab. It lists every dataset in the project’s data
 store with its row count and number of fields, and marks the ones that hold
 structures.</p>
+<p><img alt="The Data tab: the Datasets heading with About database and Import buttons, a table of four datasets with their rows, fields and badges (structures, indexed, filtered), and below it a preview of the selected dataset’s first rows." loading="lazy" decoding="async" width="2800" height="2000" src="/squonk2-viz-docs/latest/_astro/data-tab.uDkJC1yB_Z2fxSIY.webp"></p>
 <p>Click a dataset to see a <strong>Preview</strong> of its rows beneath the list, a page at a
 time. A dataset with more than twelve fields opens on the first twelve; press
 <strong>Show all N fields</strong> beside the row count to see the rest (a column you have
@@ -100,6 +101,7 @@ ones included). Choose one, give the dataset a name, and press <strong>Import</s
 types of the columns are worked out from <strong>every</strong> value in the file, not a
 sample, so a number that only shows up late in the file cannot turn a column
 into text half way through.</p>
+<p><img alt="The Import a file dialog: a dropdown of project files, a Choose file button for an upload, a box for a URL, and the name to give the dataset." loading="lazy" decoding="async" width="1216" height="766" src="/squonk2-viz-docs/latest/_astro/data-import-dialog.BD-73eL8_Z2dxYaU.webp"></p>
 <p>You do not have to put the file in the project first. The same dialog can
 <strong>upload</strong> a file from your computer (<strong>Choose file…</strong>), or import one from a
 <strong>URL</strong>. The server downloads that, so the address must be <code>https://</code> and
@@ -120,6 +122,7 @@ dataset: starting another while one is running is refused.</p>
 <p><strong>Calculate fields…</strong>, <strong>Calculate molecular properties…</strong>, <strong>Edit fields…</strong> and <strong>Filter…</strong> change the dataset itself. It keeps its name, its rows and
 their ids, so every chart and Dataset node that uses it carries on, with nothing to point at something new. The columns appear when the job is done; until
 then the dataset is exactly as it was, and if the job fails or you cancel it, it still is. These ask for no name.</p>
+<p><img alt="A dataset’s actions menu: Preview, Export CSV, Export SDF, Index structures, Calculate fields, Calculate molecular properties, Filter, Edit fields, Join with and Delete." loading="lazy" decoding="async" width="552" height="770" src="/squonk2-viz-docs/latest/_astro/data-actions-menu.DEBw_QsI_1qY14p.webp"></p>
 <p><strong>Join with…</strong> makes a <em>new</em> dataset, because a joined row is a combination of rows: it asks for a name (offering one such as <code>compounds-joined</code>), so a
 mistake costs nothing and you can keep every stage. Naming an existing dataset replaces it, and the dialog says so before you press the button.</p>
 <p>Because these are made to the dataset itself, there is no copy to throw away if one was a mistake. A calculated column can’t be given the name of a field
@@ -138,6 +141,7 @@ Datasets made <em>from</em> it are separate and are not affected.</p>
 <p><strong>Filter…</strong> hides the rows that fail your criteria. Nothing is copied or deleted: the dataset keeps its name, its rows and their ids, and every chart that
 uses it, the preview, an export and a join see only the rows that pass. This is not the same as selecting points on a chart, which is for exploring; a
 filter changes what the dataset <em>is</em> until you take it off. The Dataset node of a filtered dataset says how many rows it is showing.</p>
+<p><img alt="The Filter dialog with the expression RDK_logp &gt; 2 and RDK_tpsa &lt; 90 entered, saying it matches 582 of 1,000 records, with the Keep top or bottom rows controls beneath." loading="lazy" decoding="async" width="1216" height="1238" src="/squonk2-viz-docs/latest/_astro/data-filter.DAZ7EoaP_ZhfqVO.webp"></p>
 <ul>
 <li><strong>To change it</strong>, choose <strong>Filter…</strong> again. The dialog opens on the filter that is applied. A new filter <strong>replaces</strong> the old one and is worked out over
 <strong>all</strong> of the rows, so rows the old filter hid can come back.</li>
@@ -184,6 +188,7 @@ case-sensitive.</p>
 <p>A structure is stored as text when a file is imported. That is all that drawing it needs, so a molecule grid, the 3D viewer, the interaction charts and the
 R-group table all work straight away, and an import of a large SDF file is quick. What text cannot do is be <strong>searched</strong>: a substructure or a similarity
 search has to be answered by the database, which needs the structures <strong>indexed</strong> first.</p>
+<p><img alt="The Index structures dialog: one row per fingerprint, each with its kind, radius and size in bits, and a button to add another." loading="lazy" decoding="async" width="1216" height="642" src="/squonk2-viz-docs/latest/_astro/data-index-structures.Cl1iTBG-_DzOIO.webp"></p>
 <p><strong>Index structures…</strong> (on a dataset that holds structures) builds that index. The dialog asks which <strong>fingerprints</strong> to build for similarity searching:</p>
 <ul>
 <li>a <em>kind</em> (Morgan, Feature Morgan, RDKit, Atom pair or Topological torsion),</li>
@@ -199,6 +204,7 @@ the same index rather than building another, for the first dataset that has one.
 <h2 id="about-the-database">About the database</h2>
 <p><strong>About database…</strong>, at the top of the Data tab, shows how big this project’s tables are and how much of that is dead space. It is there when the project’s data lives in a
 database (the Data Manager’s app does; the demo gallery’s in-browser datasets do not). Everything in it is about <strong>this project</strong> only.</p>
+<p><img alt="The About database dialog: a table of the project’s tables with their purpose, size, index size, rows, dead rows and last vacuum, and Vacuum and Compact buttons on each row." loading="lazy" decoding="async" width="2416" height="1562" src="/squonk2-viz-docs/latest/_astro/data-about-database.BuoAwOb2_2dgfFp.webp"></p>
 <p>It lists every table, largest first (click a column heading to sort by it, and again to reverse): each dataset, the table behind each <a href="#indexing-structures">structure index</a> (with the datasets that use it), and a few internal
 tables the service keeps for itself. For each you see:</p>
 <ul>
@@ -222,6 +228,7 @@ run it again when the project is quiet.</li>
 <p><strong>Calculate molecular properties…</strong> (on a dataset that holds structures) adds RDKit properties as new columns, worked out from the structure of each row.
 Unlike a search it does not need the structures indexed. Choose the <strong>structure field</strong> (the first is offered) and tick the properties you want. The columns
 are added to the dataset itself, after the ones it has, and its rows and their ids are unchanged.</p>
+<p><img alt="The Calculate molecular properties dialog: a structure field and column prefix at the top, then checkboxes for each property grouped as Size, Lipophilicity and polarity, Hydrogen bonding and flexibility, and Rings." loading="lazy" decoding="async" width="1216" height="1888" src="/squonk2-viz-docs/latest/_astro/data-calculate-properties.BLzn_qD1_l9exK.webp"></p>
 <table>
 <thead>
 <tr>
@@ -258,6 +265,7 @@ the button stays disabled: change the prefix. A structure RDKit cannot read leav
 many there were. A molecule with no ring has no Murcko scaffold, which is also left empty. A dataset whose structures are indexed keeps its index.</p>
 <h2 id="editing-fields">Editing fields</h2>
 <p><strong>Edit fields…</strong> is the one place to tidy a dataset’s columns, mainly before you draw anything from it. The dialog has a row for every field:</p>
+<p><img alt="The Edit fields dialog: a row for each field with a display name box above the field’s name and a Rename field link, its SQL type, its type and index choices and a delete button. Two display names are set, one field’s name is open for renaming with the warning that nothing bound to it follows, and the Apply button counts three changes." loading="lazy" decoding="async" width="1800" height="1552" src="/squonk2-viz-docs/latest/_astro/data-edit-fields.CxM_Eaen_sxFX3.webp"></p>
 <table>
 <thead>
 <tr>
@@ -267,8 +275,8 @@ many there were. A molecule with no ring has no Murcko scaffold, which is also l
 </thead>
 <tbody>
 <tr>
-<td><strong>Field</strong></td>
-<td>The name, which you can change.</td>
+<td><strong>Display name</strong></td>
+<td>The label shown for the field in pickers, the Dataset node, chart axes and tooltips. Leave it empty to show the field’s name, which is shown beneath it.</td>
 </tr>
 <tr>
 <td><strong>SQL type</strong></td>
@@ -291,8 +299,11 @@ many there were. A molecule with no ring has no Murcko scaffold, which is also l
 <p>Nothing happens until <strong>Apply</strong>, and then all of it happens or none of it does: if anything fails, or you cancel the job, the dataset is exactly as it was. The dialog
 says what is wrong with an edit as you type it (a name that is already taken, an index that does not suit the field).</p>
 <ul>
-<li><strong>Renaming</strong> a field changes it everywhere in the dataset, but anything <em>bound</em> to the old name (a chart’s axis, a node in a design) has to be bound to the new
-one again. The dialog warns you. A field used by the filter that is applied cannot be renamed or deleted until the filter is cleared.</li>
+<li><strong>Display names</strong> are the usual way to change how a field reads (for example <code>RDK_logp</code> to <code>logP</code>, or <code>IC50 [nM]</code>). A display name is a label only: charts and
+nodes stay bound to the field, so nothing in a design has to be redone. Characters such as brackets are ordinary text.</li>
+<li><strong>Renaming</strong> the field itself (<strong>Rename field…</strong> under its display name) is for the rare case where the name really is wrong, such as a CSV file with no header
+line. It changes the name everywhere in the dataset, but <strong>nothing bound to the old name follows</strong>: a chart’s axis or a node in a design shows it as <em>not found</em>
+until you choose the field again. The dialog warns you. A field used by the filter that is applied cannot be renamed or deleted until the filter is cleared.</li>
 <li><strong>Deleting</strong> a field removes the column and its data for good. The dialog asks once more, with the names, before it does it. Deleting the <em>structures</em> field
 also deletes the structure index, leaving a plain data table (the index is kept if another dataset, such as a join, still uses it).</li>
 <li><strong>Changing a type</strong> rebuilds the column, which also drops its index; choose one again in the same edit if you want it. Structure fields can be renamed and deleted,
@@ -353,6 +364,7 @@ and any structures keep their searches. A field that becomes text is treated as 
 <h2 id="joining-datasets">Joining datasets</h2>
 <p><strong>Join with…</strong> combines two or more datasets into one, matching rows on a key
 column, so a chart can draw on columns from several files at once.</p>
+<p><img alt="The Join datasets dialog: the primary dataset and its key column, a second dataset and its key, the kind of join to keep and the name of the new dataset." loading="lazy" decoding="async" width="1216" height="878" src="/squonk2-viz-docs/latest/_astro/data-join.DcAuS-38_7Qscb.webp"></p>
 <p>Start from the primary dataset — the one you opened the menu on — and the dialog
 lists it first. Use <strong>+ Add dataset</strong> for each further input, and for each choose the <strong>key column</strong> whose
 values are matched. Then choose which rows to <strong>Keep</strong>:</p>
@@ -370,7 +382,7 @@ first structure column’s search index with its source. <a href="../../data-cen
 <p><strong>Calculate fields…</strong> adds columns worked out row by row from the columns
 already there. They are added to the dataset itself, so every chart that uses it
 offers them as if they had been in the file.</p>
-<p><img alt="The Calculated fields editor: two columns, pIC50 and selectivity, each with clickable field names, operator and function buttons above its expression." loading="lazy" decoding="async" width="3600" height="2500" src="/squonk2-viz-docs/latest/_astro/calculated-fields-dialog.DbLNZwot_m4N25.webp"></p>
+<p><img alt="The Calculated fields editor with a column named tpsa_per_atom and the expression RDK_tpsa / RDK_hac, with clickable field names, operator and function buttons above it." loading="lazy" decoding="async" width="1816" height="936" src="/squonk2-viz-docs/latest/_astro/data-calculate-fields.DfL8tD1W_ZdLmSo.webp"></p>
 <p>Use <strong>+ Add column</strong> for each one.</p>
 <p>Click a field name to insert it, or type it; the operators <code>+ − × ÷ ^</code> and the
 functions <code>abs</code>, <code>ceil</code>, <code>exp</code>, <code>floor</code>, <code>ln</code>, <code>log10</code>, <code>max</code>, <code>min</code>, <code>pow</code>,
@@ -403,8 +415,9 @@ structure field. With no datasets yet the dropdown says so and points you to the
 Data tab.</p>
 <p>If a filter on the Data tab is hiding some of the dataset’s rows, the node says so
 (<em>Filtered: 120 of 3,500 rows</em>): every chart wired to it draws only those rows.
-When you rename or delete a field with <strong>Edit fields…</strong>, the node follows, and a
-chart that used the old field has to be given a field again.</p>
+When you change a field’s display name with <strong>Edit fields…</strong>, the node and its charts
+follow. When you rename or delete the field itself, a chart that used the old field
+has to be given a field again.</p>
 <p>The node stores the dataset’s <em>name</em>, so a saved design finds its data again in a
 new instance as long as a dataset of that name exists there. Calculating, filtering
 and editing fields all change a dataset in place and keep its name, so none of them

@@ -103,15 +103,16 @@ underneath — as text, or as a small bar chart or radar plot.</p>
 </tr>
 <tr>
 <td>Algorithm</td>
-<td>Require filter, then the structure search</td>
+<td>The structure search</td>
 </tr>
 </tbody>
 </table>
 <p><img alt="The card grid’s Appearance tab: property display, molecule size, force 2D and SDF format." loading="lazy" decoding="async" width="606" height="368" src="/squonk2-viz-docs/latest/_astro/settings-card-grid-appearance.DKpQ8F3I_KDpg9.webp"></p>
-<p><strong>Require filter</strong> is on by default and matters: drawing a depiction is real
-work, and a grid pointed at ten thousand molecules with nothing filtering it
-would take a long time. Leave it on and wire a selection into the grid’s
-<code>filter</code> port; turn it off only for a dataset you know is small.</p>
+<p>The grid shows every row of its dataset when nothing is wired into its <code>filter</code>
+port, a page at a time: <strong>Cards per page</strong> (on Layout) sets how many molecules
+are drawn at once, and <strong>Load more</strong> at the foot of the grid draws the next page.
+So a large dataset costs one page of drawings, not ten thousand. Wire a selection
+into the <code>filter</code> port to show just those rows.</p>
 <p><strong>Force 2D</strong> redraws a molecule that carries 3D coordinates as a proper flat
 depiction, instead of projecting its 3D geometry onto the page — which is
 usually what you want for a docking pose.</p>
@@ -166,7 +167,8 @@ out as a table: one R-group down the side, another across the top, and the
 molecules carrying that combination in each cell.</p>
 <p>The decomposition runs in your browser, so on a large dataset the table needs a
 filter: with more than 5,000 rows it asks you to narrow them first and says how many
-it was given.</p>
+it was given. A smaller dataset needs no filter at all, and a filter set on the Data
+tab counts too.</p>
 <p><img alt="The SAR view: a MoleculeSketcher on the left with an empty canvas, and the R-group table beside it asking for a core scaffold with R-group attachment points." loading="lazy" decoding="async" width="3200" height="2000" src="/squonk2-viz-docs/latest/_astro/view-sar.fBu842nU_17VNIp.webp"></p>
 <p><strong>Fields:</strong> Structure*, Label, Cell fields.</p>
 <p>Set it up like this:</p>
@@ -214,7 +216,8 @@ element, changing a bond order, inverting a stereocentre), which is what
 decides which ring a molecule lands on.</p>
 <p>The distances take a moment to compute, and a progress indicator shows while
 they do. They are computed in your browser, so with more than 2,000 rows the chart
-asks for a filter and says how many rows it was given. The anchor must be among the
+asks for a filter and says how many rows it was given; a smaller dataset needs none,
+and a filter set on the Data tab counts too. The anchor must be among the
 rows that remain.</p>
 <h2 id="moleculeviewer3d">MoleculeViewer3D</h2>
 <p>An interactive 3D view of ligands, optionally inside a protein. It is built on
