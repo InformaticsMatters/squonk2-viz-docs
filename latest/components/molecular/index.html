@@ -135,13 +135,16 @@ In the bar chart and radar displays, lists and scores are shown under the chart,
 straight away, and every chart drawing from the dataset follows. Add several list fields to the display fields to keep several lists side by side. Ticking a
 checkbox does not select the card.</p>
 <p>To change many molecules at once, select their cards and use the <strong>☑</strong> button in the card grid’s title bar: <em>Add selected to …</em> and <em>Remove selected from …</em>
-for each yes/no list on display, <em>Set selected … to</em> each choice of a choice list, and <em>Set selected …</em> for a score, which asks for the number.</p>
+for each yes/no list on display, <em>Set selected … to</em> each choice of a choice list, with <em>— (clear)</em> to empty it, and <em>Set selected …</em> for a score, which asks for the
+number, with <em>Clear … for selected</em> to empty it. With no cards selected the menu says <strong>Select molecules first</strong> and its actions are greyed out.</p>
+<p><img alt="A card grid showing three list fields on each card, a To progress checkbox, a Decision dropdown and a Priority number box. Two cards are selected, and the ☑ menu is open with Add selected to To progress, Remove selected from To progress, Set selected Decision to make, hold, reject or clear, Set selected Priority and Clear Priority for selected." loading="lazy" decoding="async" width="2800" height="820" src="/squonk2-viz-docs/latest/_astro/chart-card-grid-lists.CHH5fLnU_Z2od7Dt.webp"></p>
 <p>A yes/no field that is not editable is shown as a greyed-out checkbox, so you can see the value but not change it.</p>
 <h2 id="form">Form</h2>
 <p>One record at a time, laid out the way you want it — a large structure with the compound ID, assay values and your lists arranged around it. A Form is for
 working down a set of compounds: look at one, edit its lists, move to the next.</p>
 <p><strong>Fields:</strong> none on the node. You choose what the form shows on the form itself (see <strong>Edit layout</strong> below).</p>
 <p><strong>Ports:</strong> Dataset, Filter and Marking in; Selection out.</p>
+<p><img alt="A Form in Browse mode: a bar with Browse and Edit layout, first, previous, next and last buttons, the record number box showing 1 of 53 and a Sort control; below it a Structure widget showing the molecule, a Compound table of ID, Series, logP and IC50, and a Curation table with a ticked To progress box, a Decision dropdown and a Priority score." loading="lazy" decoding="async" width="1354" height="960" src="/squonk2-viz-docs/latest/_astro/chart-form.CVXIu5g5_Z2oY3T8.webp"></p>
 <h3 id="browsing">Browsing</h3>
 <p>The bar along the top steps through the records:</p>
 <ul>
@@ -172,6 +175,10 @@ compound you are looking at, and a 3D viewer can show its pose. A record that is
 <td><strong>Field table</strong></td>
 <td>Several fields of the record as a table of name and value. It can show them as <strong>Text</strong>, <strong>Bar</strong> (each number against the field’s range over the whole dataset) or <strong>Radar</strong>.</td>
 </tr>
+<tr>
+<td><strong>Related records</strong></td>
+<td>The rows of a linked dataset that go with the record on screen, as a table: a compound’s activity measurements, say. Choose the link and the columns in its ⚙. Offered only when the dataset is linked to another (see Data); at most 200 rows are shown, with a count of the rest. The <strong>↑</strong> and <strong>↓</strong> keys move the pick up and down the rows (the <strong>←</strong> and <strong>→</strong> keys still step through the records). With several tables on the form, the keys go to the table you last clicked, and to the first one until you have clicked any. In a designer view a row can be clicked: the picked row is an output of the Form node, one per table, which can filter a chart of the linked dataset.</td>
+</tr>
 </tbody>
 </table>
 <p>A form can have any number of each, so you can put the identifying fields in one table and the assay values in a bar chart beside it. A field is always
@@ -192,7 +199,7 @@ is refused. When there is no room left for another widget the buttons are greyed
 or make the panel taller. If you make the panel shorter than your layout, the whole form shrinks to fit rather than being cut off.</li>
 <li>Values cannot be edited while you are editing the layout; switch back to <strong>Browse</strong> first.</li>
 </ul>
-<p>A new form starts with a default layout: the first structure field, with the other fields in a table beside it. The layout is saved with the form, in
+<p>A new form starts with a default layout: the first structure field, with the first eight of the other fields in a table beside it (add more from the table’s <strong>⚙</strong> in <strong>Edit layout</strong>). The layout is saved with the form, in
 the saved visualisation.</p>
 <p>If a field a widget shows is later renamed or deleted on the Data tab, the widget keeps its place and shows the field’s name followed by <strong>(not found)</strong>
 instead of disappearing, so you can see what to fix. The rest of the form carries on working.</p>
@@ -298,6 +305,13 @@ and mouse controls are NGL’s.</p>
 <p>Wire a <strong>FileSelector</strong> to its <code>files</code> port to load proteins — it loads all of
 them — and a dataset to its <code>dataset</code> port for the ligands. A panel in the
 viewer’s <strong>top-left corner</strong> lists the proteins with a checkbox each.</p>
+<p>A protein can also come from a field of the ligand rows themselves, or of their <strong>related rows</strong>. If the ligand dataset has a <em>protein</em> field (the PDB tool’s instances, which
+hold a link to the structure they were found in), or is linked to a dataset that has one, the node offers <strong>Protein from</strong>: choose it, and wire a selection to the viewer’s
+<strong>Ligands filter</strong>. The viewer loads the structure of each filtered ligand (up to 8; a structure that several ligands share is loaded once), named by its key or file, in
+the same Proteins panel. A protein field holds the structure’s text or an <code>https</code> link to it. With no filter wired it loads none.</p>
+<p>To browse PDB results: put a Form on the <strong>compounds</strong> (a molecule widget, a field table and a <strong>Related records</strong> widget showing the instances), a 3D viewer on the <strong>instances</strong>
+(Protein from the structure link), and wire the Form node’s output for that table to the viewer’s <strong>Ligands filter</strong>. On the Design tab the Form node lists the widgets on the form (as <em>Molecule</em>, <em>Field table</em> or <em>Related records</em>, with the title in brackets when it has one), and each Related records table has an output dot of its own, so with several tables you choose which one the viewer follows. The row picked in that table (the first as each
+compound comes up; click another to change it) is the one the viewer shows, with its protein. A table appears on the node once it has been added in a view’s <strong>Edit layout</strong>.</p>
 <table>
 <thead>
 <tr>
