@@ -2,7 +2,7 @@
   "versions": [
     {
       "id": "latest",
-      "title": "latest (0.9.8)"
+      "title": "latest (0.9.9)"
     }
   ],
   "default": "latest"
