@@ -96,11 +96,18 @@ dataset: <strong>Preview</strong>, <strong>Export CSV</strong>, <strong>Export S
 A dataset whose structures have been indexed carries an <em>indexed</em> mark beside <em>structures</em>; hover over it to see how. A dataset with a filter on shows how many
 of its rows you can see (<em>1,245 of 35,090</em>) and a <em>filtered</em> mark.</p>
 <h3 id="importing-a-file">Importing a file</h3>
-<p><strong>Import…</strong> opens a dialog listing the CSV and SDF files in the project (gzipped
+<p><strong>Import…</strong> opens a dialog listing the CSV, TSV, SMI (a SMILES file, read as tab-separated) and SDF files in the project (gzipped
 ones included). Choose one, give the dataset a name, and press <strong>Import</strong>. The
 types of the columns are worked out from <strong>every</strong> value in the file, not a
 sample, so a number that only shows up late in the file cannot turn a column
 into text half way through.</p>
+<p>A CSV or TSV file whose <strong>first column</strong> is text holding valid SMILES (as in a <code>.smi</code> file) is imported with that column as
+<strong>structures</strong>, so it can be drawn in a card grid and indexed without any setup. Only the first column is judged this way, and by its first 100 values, of which
+nearly all must be structures a chemistry toolkit can read; any other text column stays text. Either is a choice you can change afterwards in
+<a href="#editing-fields"><strong>Edit fields…</strong></a>.</p>
+<p>The <strong>header line is optional</strong>. If the first line of the file is itself a structure, and the first column of the lines after it is structures too, the file is
+taken to have no header and every line is data; the columns are named <code>smiles</code>, <code>field2</code>, <code>field3</code> and so on, and you can give them display names in
+<strong>Edit fields…</strong>. Anything else keeps its first line as the header, including a file that has only one line.</p>
 <p><img alt="The Import a file dialog: a dropdown of project files, a Choose file button for an upload, a box for a URL, and the name to give the dataset." loading="lazy" decoding="async" width="1216" height="766" src="/squonk2-viz-docs/latest/_astro/data-import-dialog.BD-73eL8_Z2dxYaU.webp"></p>
 <p>You do not have to put the file in the project first. The same dialog can
 <strong>upload</strong> a file from your computer (<strong>Choose file…</strong>), or import one from a
@@ -390,7 +397,7 @@ many there were. A molecule with no ring has no Murcko scaffold, which is also l
 </tr>
 <tr>
 <td><strong>Type</strong></td>
-<td>The type the application treats it as (<em>string</em>, <em>integer</em>, <em>float</em>, <em>boolean</em>); change it with the menu.</td>
+<td>The type the application treats it as (<em>string</em>, <em>integer</em>, <em>float</em>, <em>boolean</em>, or <em>molecule</em>); change it with the menu. <em>molecule</em> is text holding SMILES (or a molfile) that is drawn as a structure: choose it on any text field, and choose <em>string</em> on a structure field to make it plain text again. Only the role changes, never the text, so the change can always be undone.</td>
 </tr>
 <tr>
 <td><strong>Index</strong></td>
@@ -417,7 +424,10 @@ until you choose the field again. The dialog warns you. A field used by the filt
 <li><strong>Deleting</strong> a field removes the column and its data for good. The dialog asks once more, with the names, before it does it. Deleting the <em>structures</em> field
 also deletes the structure index, leaving a plain data table (the index is kept if another dataset, such as a join, still uses it).</li>
 <li><strong>Changing a type</strong> rebuilds the column, which also drops its index; choose one again in the same edit if you want it. Structure fields can be renamed and deleted,
-but not retyped or indexed.</li>
+and changed to plain text and back, but not retyped to a number or indexed. Only a text field can be made <em>molecule</em>, never a number or yes/no field. A structure field
+cannot be editable, have choices or be a relation’s key, and making a field <em>molecule</em> removes its column index, if it had one.</li>
+<li><strong>Making a structure field plain text</strong> keeps its values but deletes the structure index built on it, like deleting it does: structure search stops working
+until a structure field is indexed again with <strong>Index structures…</strong>. Making a field <em>molecule</em> indexes nothing; do that when you want searches.</li>
 <li>Fields keep their place; a calculated column you added is still at the end.</li>
 </ul>
 <h2 id="adding-a-list-field">Adding a list field</h2>

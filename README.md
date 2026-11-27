@@ -9,3 +9,5 @@ GitHub Actions workflows push to this branch on release.
   — how to build and use a visualisation page in the Squonk Data Manager app.
 - **[Component Gallery](https://informaticsmatters.github.io/squonk2-viz-docs/gallery/)**
   — every visual component, live, shown against example data.
+
+Access Squonk [here](https://squonk.it/data-manager-ui).
